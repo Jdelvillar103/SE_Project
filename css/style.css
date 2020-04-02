@@ -1,4 +1,18 @@
 /*import fonts from google fonts*/
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Gotu&family=Lato:ital@1&family=Roboto:wght@900&display=swap');
-</style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald|Sofia|Gotu|Lato|Roboto&display=swap' );
+
+:root{
+    /*subject to change*/
+    --primary-color: darkmagenta;
+    --light-gray: gray;
+    --border: black;
+    --text-color: darkgreen;
+    --roboto: "Roboto",sans-serif;
+    --soia: "Sofia", cursive;
+    --oswald:"Oswald", bold;
+
+    
+}
+.primary-color{
+    color: var(--primary-color);
+}
