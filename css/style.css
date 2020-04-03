@@ -1,4 +1,5 @@
 /*import fonts from google fonts*/
+/* to add new font fontName|fontname|*/
 @import url('https://fonts.googleapis.com/css2?family=Oswald|Sofia|Gotu|Lato|Roboto&display=swap' );
 
 :root{
@@ -13,6 +14,7 @@
 
     
 }
+/* Variables- can be called using var(****)*/
 .primary-color{
     color: var(--primary-color);
 }
@@ -42,6 +44,7 @@ header{
 header .site-title{
     font-family: var(--roboto);
 }
+/*dropdown menu*/
 .container .dropdown-toggle,
 .container .dropdown-item{
     color: white;
@@ -53,4 +56,23 @@ header .site-title{
     font-size: 0.9em;
     text-decoration: none;
     color: white;
+}
+
+/* Navigation Menu*/
+
+.navbar-nav{
+    padding: 0.8em 0em;
+}
+
+.navbar-nav-link{
+    font-size: 0.9em;
+    color: var(--light-gray)!important;
+}
+
+.navbar-nav .nav-item .nav-link{
+    padding: 0 1.3em;
+}
+
+.navbar-nav .basket-icon{
+    margin-right: 6.5rem !important;
 }
