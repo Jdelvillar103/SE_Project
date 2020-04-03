@@ -8,36 +8,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `e_commerce` DEFAULT CHARACTER SET latin1 ;
 USE `e_commerce` ;
 
--- -----------------------------------------------------
--- Table `e_commerce`.`competitor-2017`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `fuelClient`.`competitor-2017` (
-  `ID_Competitor` INT(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `CompetitorName` VARCHAR(15) NOT NULL,
-  `January` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `February` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `March` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `April` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `May` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `June` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `July` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `August` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `September` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `October` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `November` DECIMAL(4,3) UNSIGNED NOT NULL,
-  `Decemeber` DECIMAL(4,3) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ID_Competitor`),
-  UNIQUE INDEX `ID_Competitor_UNIQUE` (`ID_Competitor` ASC),
-  UNIQUE INDEX `CompetitorName_UNIQUE` (`CompetitorName` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 1001
-DEFAULT CHARACTER SET = latin1;
-
 
 -- -----------------------------------------------------
 -- Table `e_commerce`.`profile`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `e_commerce`.`profile` (
+
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE IF NOT EXISTS `profile` (
   `ID_Profile` INT(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   `Email` VARCHAR(30) NOT NULL,
   `FName` VARCHAR(20) NOT NULL,
@@ -46,23 +23,48 @@ CREATE TABLE IF NOT EXISTS `e_commerce`.`profile` (
   `City` VARCHAR(20) NOT NULL,
   `State` tinyint(4) NOT NULL,
   `Zipcode` INT(5) NOT NULL,
+  `Role` INT(1) NOT NULL DEFAULT 2,
   PRIMARY KEY (`ID_Profile`),
-  KEY `profile_ibfk_1` (`State`),
   UNIQUE INDEX `ID_Profile_UNIQUE` (`ID_Profile` ASC) ,
-  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) ) 
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
+  CONSTRAINT `profile_ibfk_1` 
+	FOREIGN KEY (`State`) 
+    REFERENCES `states` (`StateID`),
+  CONSTRAINT `profile_ibfk_2` 
+	FOREIGN KEY (`Role`) 
+    REFERENCES `user_roles` (`ID_URoles`)) 
   
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = latin1;
 
-ALTER TABLE `profile`
-  ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`State`) REFERENCES `states` (`StateID`);
+-- -----------------------------------------------------
+-- Table `e_commerce`.`user_roles`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE IF NOT EXISTS `user_roles` (
+  `ID_URoles` INT(1) NOT NULL AUTO_INCREMENT,
+  `URolesN` VARCHAR(20) DEFAULT NULL,
+  PRIMARY KEY (`ID_URoles`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `card_type`
+--
+
+INSERT INTO `user_roles` (`ID_URoles`, `URolesN`) VALUES
+(1, 'Registered w/Payment'),
+(2, 'Registered w/o Payment'),
+(3, 'Administrator'),
+(4, 'Employee');
 
 -- -----------------------------------------------------
 -- Table `e_commerce`.`credentials`
 -- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `credentials`;
-CREATE TABLE IF NOT EXISTS `e_commerce`.`credentials` (
+CREATE TABLE IF NOT EXISTS `credentials` (
   `ID_Credentials` INT(6) UNSIGNED ZEROFILL NOT NULL,
   `Password` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`ID_Credentials`),
@@ -76,7 +78,9 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `e_commerce`.`payment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `e_commerce`.`payment` (
+
+DROP TABLE IF EXISTS `payment`;
+CREATE TABLE IF NOT EXISTS `payment` (
   `ID_Payment` INT(6) UNSIGNED ZEROFILL NOT NULL,
   `P_FName` VARCHAR(20) NOT NULL,
   `P_MInit` VARCHAR(1) NULL,
@@ -97,6 +101,11 @@ CREATE TABLE IF NOT EXISTS `e_commerce`.`payment` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+
+-- -----------------------------------------------------
+-- Table `e_commerce`.`card_type`
+-- -----------------------------------------------------
+
 DROP TABLE IF EXISTS `card_type`;
 CREATE TABLE IF NOT EXISTS `card_type` (
   `ID_CType` INT(1) NOT NULL AUTO_INCREMENT,
@@ -108,37 +117,18 @@ CREATE TABLE IF NOT EXISTS `card_type` (
 -- Dumping data for table `card_type`
 --
 
-INSERT INTO `status` (`Code`, `Status`) VALUES
+INSERT INTO `card_type` (`ID_CType`, `CTypeN`) VALUES
 (1, 'MasterCard'),
 (2, 'Visa'),
 (3, 'American Express'),
 (4, 'Discover Card'),
-(5, 'Diners Club'),
-
--- -----------------------------------------------------
--- Table `e_commerce`.`fuelquote`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `e_commerce`.`fuelquote` (
-  `ID_FuelQuote` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `ID_Profile` INT(6) UNSIGNED ZEROFILL NOT NULL,
-  `GallonsRequested` INT(3) NOT NULL,
-  `DeliveryDate` DATE NOT NULL,
-  `DeliveryAddress` VARCHAR(45) NOT NULL,
-  `DeliveryCity` VARCHAR(20) NOT NULL,
-  `DeliveryState` INT(2) NOT NULL,
-  `DeliveryZipCode` INT(5) NOT NULL,
-  `FuelRate` DECIMAL(4,0) UNSIGNED NOT NULL,
-  `TotalAmount` DECIMAL(6,0) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ID_FuelQuote`),
-  UNIQUE INDEX `ID_FuelQuote_UNIQUE` (`ID_FuelQuote` ASC) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COMMENT = '	';
+(5, 'Diners Club');
 
 
 -- -----------------------------------------------------
 -- Table `e_commerce`.`states`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `states` (
   `StateID` tinyint(4) NOT NULL AUTO_INCREMENT,
   `StateAbbreviation` char(2) NOT NULL,
@@ -150,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `states` (
 -- Dumping data for table `states`
 --
 
-INSERT INTO `state` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
+INSERT INTO `states` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
 (1, 'AL', 'Alabama'),
 (2, 'AK', 'Alaska'),
 (3, 'AZ', 'Arizona'),
