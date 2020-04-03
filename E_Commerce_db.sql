@@ -45,7 +45,7 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE IF NOT EXISTS `user_roles` (
   `ID_URoles` INT(1) NOT NULL AUTO_INCREMENT,
-  `URolesN` VARCHAR(20) DEFAULT NULL,
+  `URolesN` VARCHAR(25) DEFAULT NULL,
   PRIMARY KEY (`ID_URoles`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `ID_Payment` INT(6) UNSIGNED ZEROFILL NOT NULL,
   `Pa_FName` VARCHAR(20) NOT NULL,
-  `Pa_MInit` VARCHAR(1) NULL,
+  `Pa_MInit` VARCHAR(1),
   `Pa_LName` VARCHAR(20) NOT NULL,
   `CardType` INT(1) NOT NULL,
   `CardNum` INT(12) NOT NULL,
@@ -92,11 +92,10 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `ExpYear` INT(2) NOT NULL,
   `CVV` INT(3) NOT NULL,
   PRIMARY KEY (`ID_Payment`),
-  UNIQUE INDEX `ID_Payment_UNIQUE` (`ID_Payment` ASC) ,
   CONSTRAINT `FK_CardType`
     FOREIGN KEY (`CardType`)
     REFERENCES `e_commerce`.`card_type` (`ID_CType`),
-  CONSTRAINT `FK_Profile_ID`
+  CONSTRAINT `FK_ID_Payment`
     FOREIGN KEY (`ID_Payment`)
     REFERENCES `e_commerce`.`profile` (`ID_Profile`))
 ENGINE = InnoDB
@@ -129,11 +128,11 @@ INSERT INTO `card_type` (`ID_CType`, `CTypeN`) VALUES
 -- -----------------------------------------------------
 -- Table `e_commerce`.`states`
 -- -----------------------------------------------------
-
+DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
-  `StateID` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `StateAbbreviation` char(2) NOT NULL,
-  `StateName` varchar(15) NOT NULL,
+  `StateID` TINYINT(4) NOT NULL AUTO_INCREMENT,
+  `StateAbbreviation` CHAR(2) NOT NULL,
+  `StateName` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`StateID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
@@ -195,7 +194,7 @@ INSERT INTO `states` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
 
 
 -- -----------------------------------------------------
--- Table `e_commerce`.`card_type`
+-- Table `e_commerce`.`products`
 -- -----------------------------------------------------
 
 DROP TABLE IF EXISTS `products`;
@@ -204,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `PrName` VARCHAR(50) NOT NULL,
   `PrDesc` VARCHAR(120) NOT NULL,
   `Price` DECIMAL(8,2) NOT NULL,
-  PRIMARY KEY (`ID Product`)
+  PRIMARY KEY (`ID_Product`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
@@ -217,6 +216,52 @@ INSERT INTO `products` (`PrName`, `PrDesc`, `Price`) VALUES
 ('Vase', 'A glass container that can hold liquids. Intended for flowers, but you do you.', 50.00),
 ('Frame', 'A hangable holder for pictures and other small memorable items. I guess maybe pressed flowers as well.', 10.00),
 ('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy, candy...do you see where I am going with this?', 800.00);
+
+-- -----------------------------------------------------
+-- Table `e_commerce`.`cart`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `ID_Session` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `ID_Cust` INT(6) UNSIGNED ZEROFILL,
+  `Product_Num` INT(7) UNSIGNED ZEROFILL,
+  `CStatus` INT(1) DEFAULT 1,
+  PRIMARY KEY (`ID_Session`),
+  CONSTRAINT `FK_Cust_ID`
+    FOREIGN KEY (`ID_Cust`)
+    REFERENCES `e_commerce`.`profile` (`ID_Profile`),
+  CONSTRAINT `FK_Prod_ID`
+    FOREIGN KEY (`Product_Num`)
+    REFERENCES `e_commerce`.`product` (`ID_Product`),
+  CONSTRAINT `FK_CStatus`
+    FOREIGN KEY (`CStatus`)
+    REFERENCES `e_commerce`.`status_cart` (`ID_CStatus`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+-- -----------------------------------------------------
+-- Table `e_commerce`.`status_cart`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `status_cart`;
+CREATE TABLE IF NOT EXISTS `status_cart` (
+  `ID_CStatus` INT(1) NOT NULL AUTO_INCREMENT,
+  `StatusName` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`ID_CStatus`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status_cart`
+--
+
+INSERT INTO `status_cart` (`ID_CStatus`, `StatusName`) VALUES
+(1, 'Shopping'),
+(2, 'Complete');
+
+
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
