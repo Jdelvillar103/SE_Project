@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `City` VARCHAR(20) NOT NULL,
   `State` tinyint(4) NOT NULL,
   `Zipcode` INT(5) NOT NULL,
-  `Role` INT(1) NOT NULL DEFAULT 2,
+  `Role` INT(1) NOT NULL DEFAULT 2, -- Need a trigger so that when they enter a payment method, their account is upgraded
   PRIMARY KEY (`ID_Profile`),
   UNIQUE INDEX `ID_Profile_UNIQUE` (`ID_Profile` ASC) ,
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
@@ -59,6 +59,7 @@ INSERT INTO `user_roles` (`ID_URoles`, `URolesN`) VALUES
 (3, 'Administrator'),
 (4, 'Employee');
 
+
 -- -----------------------------------------------------
 -- Table `e_commerce`.`credentials`
 -- -----------------------------------------------------
@@ -82,9 +83,9 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `payment`;
 CREATE TABLE IF NOT EXISTS `payment` (
   `ID_Payment` INT(6) UNSIGNED ZEROFILL NOT NULL,
-  `P_FName` VARCHAR(20) NOT NULL,
-  `P_MInit` VARCHAR(1) NULL,
-  `P_LName` VARCHAR(20) NOT NULL,
+  `Pa_FName` VARCHAR(20) NOT NULL,
+  `Pa_MInit` VARCHAR(1) NULL,
+  `Pa_LName` VARCHAR(20) NOT NULL,
   `CardType` INT(1) NOT NULL,
   `CardNum` INT(12) NOT NULL,
   `ExpMonth` INT(2) NOT NULL,
@@ -192,6 +193,30 @@ INSERT INTO `states` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
 (49, 'WI', 'Wisconsin'),
 (50, 'WY', 'Wyoming');
 
+
+-- -----------------------------------------------------
+-- Table `e_commerce`.`card_type`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `ID_Product` INT(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `PrName` VARCHAR(50) NOT NULL,
+  `PrDesc` VARCHAR(120) NOT NULL,
+  `Price` DECIMAL(8,2) NOT NULL,
+  PRIMARY KEY (`ID Product`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`PrName`, `PrDesc`, `Price`) VALUES
+('Sofa', 'A long, comfy chair that seats multiple people.', 800.00),
+('Dining Chair', 'A chair intented to matched with a dining table. It will be comfortable with the included cushion', 250.00),
+('Vase', 'A glass container that can hold liquids. Intended for flowers, but you do you.', 50.00),
+('Frame', 'A hangable holder for pictures and other small memorable items. I guess maybe pressed flowers as well.', 10.00),
+('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy, candy...do you see where I am going with this?', 800.00);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
