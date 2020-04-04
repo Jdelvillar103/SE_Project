@@ -58,8 +58,73 @@
                 </div>
                 <div class="col-md-4 col-12 text-right">
                     <p class="my-md-4 header-links">
-                        <a href="#" class="px-2">Sign In</a>
-                        <a href="#" class="px-1">Create an Account</a>
+                        <a class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
+                        <div id="id01" class="modal">
+                        
+                            <form class="modal-content animate" action="/action_page.php">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                        title="Close Window">×</span> <br>
+                                    <!-- If you want a header:  <h1 class="text-center">Sign In</h1>-->
+                                </div>
+                        
+                                <div class="container text-left">
+                                    <label><b style="font-size:20px">Email</b></label>
+                                    <input type="text" placeholder="Enter Email" name="email" required>
+                                    <br> <br>
+                                    <label><b style="font-size:20px">Password</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw" required>
+                                    
+                                    <div class="text-center">
+                                        <button type="submit" id="signin_button"><span style="font-size:18px">Login</span></button>
+                                    </div>
+                                </div>
+                        
+                                <div class="container text-left" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                        class="cancelbtn">Cancel</button>
+                                    <span class="psw"><a href="#">Forgot password?</a></span>
+                                </div>
+                            </form>
+                        </div>
+                        <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
+                        <div id="id02" class="modal">
+                        
+                            <form class="modal-content animate" action="/action_page.php">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                                        title="Close Window">×</span> <br>
+                                    <h1 class="text-center">Sign Up</h1>
+                                </div>
+                        
+                                <div class="container text-left">
+                                    <label><b style="font-size:20px">First Name</b></label>
+                                    <input type="text" placeholder="Enter First Name" name="fName" required>
+                                    <br> <br>
+                                    <label><b style="font-size:20px">Last Name</b></label>
+                                    <input type="text" placeholder="Enter Last Name" name="lName" required>
+                                    <br> <br>
+                                    <label><b style="font-size:20px">Email</b></label>
+                                    <input type="text" placeholder="Enter Email" name="NewEmail" required>
+                                    <br> <br>
+                                    <label><b style="font-size:20px">Password</b></label>
+                                    <input type="password" placeholder="Enter Password" name="Npass" required>
+                                    <br> <br>
+                                    <label><b style="font-size:20px">Confirm Password</b></label>
+                                    <input type="password" placeholder="Confirm Password" name="2pass" required>
+                                    
+                        
+                                    <div class="text-center">
+                                        <button type="submit" id="signin_button"><span style="font-size:18px">Create Account</span></button>
+                                    </div>
+                                </div>
+                        
+                                <div class="container text-left" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                                        class="cancelbtn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
                     </p>
                 </div>
             </div>
@@ -141,7 +206,15 @@
     <!-- Main Section-->
     <footer></footer>
 
-
+    <!--For the Pop Up Window-->
+    <script>
+        var modal = document.getElementById('id01');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        } 
+    </script>
     <!-- do not touch-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
