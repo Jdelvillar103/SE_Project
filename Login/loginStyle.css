@@ -1,0 +1,106 @@
+body{
+  background: #F4F4F4;
+  font-family: Tahoma,Helvetica,sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6em;
+  margin:0;
+}
+
+.container{
+  width:80%;
+  margin:auto;
+  overflow: hidden;
+}
+
+.containerloginForm{
+  width: 50%;
+  margin:auto;
+  margin-left: 225px;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 150px;
+}
+
+.containersignupForm{
+  width: 50%;
+  margin:auto;
+  margin-right: 225px;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 70px;
+}
+
+#MainHeader{
+  font-size: 18px;
+  background-color: black;
+  background-color: #ad181f;
+  color: white;
+}
+
+.navbar{
+  background-color: #333;
+  color: white;
+}
+
+.navbar ul{
+  padding:0;
+  list-style: none;
+}
+
+.navbar li{
+  display: inline;
+}
+
+.navbar a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+.clr{
+  clear:both;
+}
+
+.loginForm{
+  border-style:solid;
+  border-width: thin;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.signupForm{
+  border-style:solid;
+  border-width: thin;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#loginFormDiv{
+  float: left;
+  width: 50%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#signupFormDiv{
+  float: right;
+  width: 50%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.mainFooter{
+    background-color: #ad181f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: 40px;
+    position: fixed;
+    bottom: 0px;
+    margin-right: auto;
+}
