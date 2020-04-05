@@ -9,15 +9,15 @@
 
     require_once('../mysql-connect.php');
 
-    $email = $_POST['Email'];
+    $email = $_POST['NewEmail'];
     $FName = $_POST['FName'];
     $LName = $_POST['LName'];
     $Address = $_POST['Address'];
     $City = $_POST['City'];
     $StateAbbr = $_POST['StateAbbr'];
     $Zipcode = $_POST['Zipcode'];
-    $Password = $_POST['Password'];
-    $CPassword = $_POST['CPassword'];
+    $Password = $_POST['Npass'];
+    $CPassword = $_POST['2pass'];
 
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
@@ -32,7 +32,7 @@
         mysqli_close($dbc);
         $Valid = "Email Already Exists: Try Logging in";
         $_SESSION['Valid'] = $Valid;
-        $url = "loginPage.php";
+        $url = "../homepage.php";
         header("Location: ".$url);
         exit();
       }
@@ -71,7 +71,7 @@
 
                 $Valid = "Account Created: Log In";
                 $_SESSION['Valid'] = $Valid;
-                $url = "loginPage.php";
+                $url = "../homepage.php";
                 header("Location: ".$url);
                 exit();
               }
@@ -80,7 +80,7 @@
                 mysqli_close($dbc);
                 $Valid = "INVALID: Passwords Don't Match";
                 $_SESSION['Valid'] = $Valid;
-                $url = "loginPage.php";
+                $url = "../homepage.php";
                 header("Location: ".$url);
                 exit();
               }
@@ -90,7 +90,7 @@
               mysqli_close($dbc);
               $Valid = "INVALID: Zip Code MUST be 5 Integers";
               $_SESSION['Valid'] = $Valid;
-              $url = "loginPage.php";
+              $url = "../homepage.php";
               header("Location: ".$url);
               exit();
         		}
@@ -98,9 +98,9 @@
           else
           {
             mysqli_close($dbc);
-            $Valid = "INVALID: City must be only char";
+            $Valid = "INVALID: City must only contain characters";
             $_SESSION['Valid'] = $Valid;
-            $url = "loginPage.php";
+            $url = "../homepage.php";
             header("Location: ".$url);
             exit();
       		}
@@ -110,7 +110,7 @@
           mysqli_close($dbc);
           $Valid = "INVALID: Last Name must be only char";
           $_SESSION['Valid'] = $Valid;
-          $url = "loginPage.php";
+          $url = "../homepage.php";
           header("Location: ".$url);
           exit();
     		}
@@ -120,7 +120,7 @@
         mysqli_close($dbc);
         $Valid = "INVALID: First Name must be only char";
         $_SESSION['Valid'] = $Valid;
-        $url = "loginPage.php";
+        $url = "../homepage.php";
         header("Location: ".$url);
         exit();
   		}
@@ -129,7 +129,7 @@
     {
       $Valid = "INVALID EMAIL: example@gmail.com";
       $_SESSION['Valid'] = $Valid;
-      $url = "loginPage.php";
+      $url = "../homepage.php";
       header("Location: ".$url);
       exit();
 		}

@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
   CONSTRAINT `profile_ibfk_1` 
 	FOREIGN KEY (`State`) 
-    REFERENCES `states` (`StateID`),
+    REFERENCES `states` (`ID_State`),
   CONSTRAINT `profile_ibfk_2` 
 	FOREIGN KEY (`Role`) 
     REFERENCES `user_roles` (`ID_URoles`)) 
@@ -130,17 +130,17 @@ INSERT INTO `card_type` (`ID_CType`, `CTypeN`) VALUES
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
-  `StateID` TINYINT(4) NOT NULL AUTO_INCREMENT,
+  `ID_State` TINYINT(4) NOT NULL AUTO_INCREMENT,
   `StateAbbreviation` CHAR(2) NOT NULL,
   `StateName` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`StateID`)
+  PRIMARY KEY (`ID_State`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `states`
 --
 
-INSERT INTO `states` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
+INSERT INTO `states` (`ID_State`, `StateAbbreviation`, `StateName`) VALUES
 (1, 'AL', 'Alabama'),
 (2, 'AK', 'Alaska'),
 (3, 'AZ', 'Arizona'),
