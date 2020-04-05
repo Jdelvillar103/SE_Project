@@ -22,10 +22,11 @@
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
       $query = "SELECT P.Email FROM profile AS P WHERE P.Email = '$email';";
-      $response = @mysqli_query($dbc,$query);
+      $response = mysqli_query($dbc,$query);
       while ($row = mysqli_fetch_array($response))
       {
         $RetrivedEmail = $row['Email'];
+        echo $row['Email'];
       }
       if ($RetrivedEmail == $email)
       {
@@ -47,24 +48,24 @@
             {
               if ($Password == $CPassword)
               {
-                $query = "SELECT S.ID_State FROM states AS S WHERE S.StateAbbreviation = '$StateAbbr';";
-                $response = @mysqli_query($dbc,$query);
+                $query = "SELECT S.ID_State FROM states AS S WHERE S.StateAbbreviation = '$StateAbbr'";
+                $response = mysqli_query($dbc,$query);
                 while ($row = mysqli_fetch_array($response))
                 {
                   $ID_State = $row['ID_State'];
                 }
 
-                $query = "INSERT INTO profile(Email,FName,LName,Address,City,ID_State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode');";
+                $query = "INSERT INTO profile(Email,FName,LName,Address,City,ID_State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
                 mysqli_query($dbc,$query);
 
-                $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email;";
-                $response = @mysqli_query($dbc,$query);
+                $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email";
+                $response = mysqli_query($dbc,$query);
                 while($row = mysqli_fetch_array($response))
                 {
                   $ID_Profile = $row['ID_Profile'];
                 }
 
-                $query = "INSERT INTO credentials VALUES('$ID_Profile','$Password');";
+                $query = "INSERT INTO credentials VALUES('$ID_Profile','$Password')";
                 mysqli_query($dbc,$query);
 
                 mysqli_close($dbc);
