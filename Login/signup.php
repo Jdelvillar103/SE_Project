@@ -14,7 +14,7 @@
     $LName = $_POST['LName'];
     $Address = $_POST['Address'];
     $City = $_POST['City'];
-    $StateAbbr = $_POST['StateAbbr'];
+    $StateN = $_POST['StateN'];
     $Zipcode = $_POST['Zipcode'];
     $Password = $_POST['Npass'];
     $CPassword = $_POST['2pass'];
@@ -23,6 +23,7 @@
 		{
       $query = "SELECT P.Email FROM profile AS P WHERE P.Email = '$email';";
       $response = mysqli_query($dbc,$query);
+
       while ($row = mysqli_fetch_array($response))
       {
         $RetrivedEmail = $row['Email'];
@@ -48,29 +49,29 @@
             {
               if ($Password == $CPassword)
               {
-                $query = "SELECT S.ID_State FROM states AS S WHERE S.StateAbbreviation = '$StateAbbr'";
-                $response = mysqli_query($dbc,$query);
+                $query = "SELECT S.ID_State FROM states AS S WHERE S.StateName = '$StateN'";
+                $response = $dbc->query($query);
                 while ($row = mysqli_fetch_array($response))
                 {
                   $ID_State = $row['ID_State'];
                 }
 
-                $query = "INSERT INTO profile(Email,FName,LName,Address,City,ID_State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
-                mysqli_query($dbc,$query);
+                $query = "INSERT INTO profile(Email,FName,LName,Address,City,State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
+                $result = $dbc->query($query);
 
                 $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email";
-                $response = mysqli_query($dbc,$query);
+                $response = $dbc->query($query);
                 while($row = mysqli_fetch_array($response))
                 {
                   $ID_Profile = $row['ID_Profile'];
                 }
 
                 $query = "INSERT INTO credentials VALUES('$ID_Profile','$Password')";
-                mysqli_query($dbc,$query);
+                $dbc->query($query);
 
                 mysqli_close($dbc);
 
-                $Valid = "Account Created: Log In";
+                $Valid = "Account Created: Log In".$StateN;
                 $_SESSION['Valid'] = $Valid;
                 $url = "../homepage.php";
                 header("Location: ".$url);

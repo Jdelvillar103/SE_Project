@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require_once('./mysql-connect.php');
 
   if(isset($_SESSION['Valid']))
   {
@@ -11,10 +12,10 @@
     $Unauthorized = $_SESSION['Unauthorized'];
   }
 
-  if(isset($_SESSION['ID']))
+  /*if(isset($_SESSION['ID']))
   {
     session_destroy();
-  }
+  }*/
  ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +140,7 @@
                                     <br> <br>
     
                                     <label ><b style="font-size:20px">State</b></label>
-                                    <select name="StateAbbr" id="select-choice">
+                                    <select name="StateN" id="select-choice">
                                         <option value="0" selected="" disabled="">Select</option>
                                         <option value="Alabama">AL</option>
                                         <option value="Alaska">AK</option>
@@ -212,10 +213,23 @@
                 </div>
             
             <div class="container-fluid p-0">
+            <!--PHP Display --> 
                 <?php
                 if (isset($_SESSION['Valid']))
                  {
-                     echo '<p style="margin-left:825px;">'.$Valid.'</p>';
+                     echo '<p style="margin-left:825px; color:green">'.$Valid.'</p>';
+                     session_destroy();
+                }
+                if (isset($_SESSION['ID']))
+                 {
+                     $ID = $_SESSION['ID'];
+                    $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
+                    $response = @mysqli_query($dbc,$query);
+                     while ($row = mysqli_fetch_array($response))
+                     {
+                        $FName = $row['FName'];
+                     }
+                     echo '<p style="margin-left:825px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                      session_destroy();
                 }
                 elseif (isset($_SESSION['Unauthorized']))
