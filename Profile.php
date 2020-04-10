@@ -17,7 +17,7 @@
     session_destroy();
   }*/
  ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -80,7 +80,7 @@
                         <a class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
                         <div id="id01" class="modal">
                         
-                            <form class="modal-content animate" action="./Login/login.php" method="post">
+                            <form class="modal-content animate" action="/action_page.php">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close"
                                         title="Close Window">×</span> <br>
@@ -109,7 +109,7 @@
                         <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
                         <div id="id02" class="modal">
                         
-                            <form class="modal-content animate" action="./Login/signup.php" method="post">
+                            <form class="modal-content animate" action="/action_page.php">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id02').style.display='none'" class="close"
                                         title="Close Window">×</span> <br>
@@ -118,25 +118,25 @@
                         
                                 <div class="container text-left">
                                     <label><b style="font-size:20px">First Name</b></label>
-                                    <input type="text" placeholder="Enter First Name" name="FName" required>
+                                    <input type="text" placeholder="Enter First Name" name="FName">
                                     <br> <br>
                                     <label><b style="font-size:20px">Last Name</b></label>
-                                    <input type="text" placeholder="Enter Last Name" name="LName" required>
+                                    <input type="text" placeholder="Enter Last Name" name="LName">
                                     <br> <br>
                                     <label><b style="font-size:20px">Email</b></label>
-                                    <input type="text" placeholder="Enter Email" name="NewEmail" required>
+                                    <input type="text" placeholder="Enter Email" name="NewEmail">
                                     <br> <br>
                                     <label><b style="font-size:20px">Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="Npass" required>
+                                    <input type="password" placeholder="Enter Password" name="Npass">
                                     <br> <br>
                                     <label><b style="font-size:20px">Confirm Password</b></label>
-                                    <input type="password" placeholder="Confirm Password" name="2pass" required>
+                                    <input type="password" placeholder="Confirm Password" name="2pass">
                                     <br><br>
                                     <label><b style="font-size:20px">Address</b></label>
-                                    <input type="text" name="Address" id="address" placeholder="Address" required>
+                                    <input type="text" name="Address" id="address" placeholder="Address">
                                     <br><br>
                                     <label><b style="font-size:20px">City</b></label>
-                                    <input type="text" name="City" id="city" placeholder="City" required>
+                                    <input type="text" name="City" id="city" placeholder="City">
                                     <br> <br>
     
                                     <label ><b style="font-size:20px">State</b></label>
@@ -196,48 +196,17 @@
                                     <label><b style="font-size:20px">Zipcode</b></label>
                                     <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required title="7 to 9 characters">
                                 </div><br>
-                                    
-                                    <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Create Account</span></button>
-                                    </div>
-                                
-                                <br>
+                        
                                 <div class="container text-left" style="background-color:#f1f1f1">
                                     <button type="button" onclick="document.getElementById('id02').style.display='none'"
                                         class="cancelbtn">Cancel</button>
-                                </div>
                                 </div>
                             </form>
                         </div>
                     </p>
                 </div>
-            
-            <div class="container-fluid p-0">
-            <!--PHP Display --> 
-                <?php
-                if (isset($_SESSION['Valid']))
-                 {
-                     echo '<p style="margin-left:825px; color:green">'.$Valid.'</p>';
-                     session_destroy();
-                }
-                if (isset($_SESSION['ID']))
-                 {
-                     $ID = $_SESSION['ID'];
-                    $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
-                    $response = @mysqli_query($dbc,$query);
-                     while ($row = mysqli_fetch_array($response))
-                     {
-                        $FName = $row['FName'];
-                     }
-                     echo '<p style="margin-left:825px; color:white">'.'Welcome '.$FName.'!'.'</p>';
-                     session_destroy();
-                }
-                elseif (isset($_SESSION['Unauthorized']))
-                {
-                    echo '<p style="margin-left:255px;color:red">'.$Unauthorized.'</p>';
-                    session_destroy();
-                }
-                ?> 
+            </div>
+        <div class="container-fluid p-0">
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -264,78 +233,127 @@
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">
                     <i class="fas fa-shopping-basket p-2"></i>  
-                </li>
-            </div>   
-        </div>            
+                </li>   
+            </div>            
         </nav>
     </div>    
     </header>
     <!-- Main Section-->
     <main>
+    </body>
 
-        <!--- First Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider">
-                <div class="slider-one">
-                <!-- Add products to slider-->
-                    <div>
-                        <img src="./assets/item-1.jpg" class="img-fluid" alt="Banner 1"/>
+    </html>
+    <div class ="container">
+                <div class = row>
+                    <div class = "col-lg-2 col-md-2 col-xs-2" >
+                        <div class = "col1">
+    
+                            
+    
+                        </div>
                     </div>
-                </div>
-            </div>
-         <div class="slider-btn">
-            <span class="prev position-top"><i class="fas fa-chevron-left"></i></span>
-            <span class="next position-top right-0"><i class="fas fa-chevron-right"></i></span>
-         </div>   
-        </div>
-        <!--- First Slider-->
-
-        <!-- Second Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider-two px-md-4"></div>
-                <div class="row slider-two text-center">
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                    <!-- add image src-->
-                        <img src="./assets/id-9-cat-1.jpg" alt="Product 1">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                    <!-- add image src-->
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                        <img src="./assets/id-9-cat-2.jpg" alt="Product 2">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                </div>
-                <div class="slider-btn">
-                    <span class="prev position-top"><i class="fas fa-chevron-left fa-2x text-secondary"></i></span>
-                    <span class="next position-top right-0"><i class="fas fa-chevron-right fa-2x text-secondary"></i></span>
-                </div>   
-            </div>       
-        </div>
-        <!--/Second Slider-->
-    </main>
-    <!-- Main Section-->
-    <footer></footer>
-
-    <!--For the Pop Up Window-->
-    <script>
-        var modal1 = document.getElementById('id01');
-        window.onclick = function (event) {
-            if (event.target == modal1) {
-                modal1.style.display = "none";
-            }
-        }
-    </script>
-    <script>
-        var modal2 = document.getElementById('id02');
-        window.onclick = function (event) {
-            if (event.target == modal2) {
-                modal2.style.display = "none";
-            }
-        }
-    </script>
-
+                    <div class = "col-lg-8 col-md-8 col-xs-8">
+                        <div class = "col2">
     
     
+    
+    
+    
+                            <div class="container">
+                                <div class="login">
+                                    <h1>Update Your Profile</h1>
+                                    <br><br>
+                                    <form>
+                                        <div>
+                                            <label for="first-name">First Name:</label>
+                                            <input type="text" name="FName" id="first-name" placeholder="John" required> <br><br>
+                                            <label for="last-name">Last Name:</label>
+                                            <input type="text" name="LName" id="last-name" placeholder="Smith" required><br><br>
+                                        </div>
+                                        <div>
+                                            <label for="address1">Address 1:</label>
+                                            <input type="text" name="address" id="address" placeholder="Address" required> <br><br>
+                                            <label for="address1">Address 2:</label>
+                                            <input type="text" name="address2" id="address2" placeholder="Address"> <br><br>
+                                            <label for="city">City:</label>
+                                            <input type="text" name="City" id="city" placeholder="City" required=""> <br> <br>
+    
+                                            <label for="select-choice"  required="">State:</label>
+                                            <select name="select-choice" id="select-choice">
+                                                <option value="0" selected="" disabled="">Select</option>
+                                                <option value="Alabama">AL</option>
+                                                <option value="Alaska">AK</option>
+                                                <option value="Arizona">AZ</option>
+                                                <option value="Arkansas">AR</option>
+                                                <option value="California">CA</option>
+                                                <option value="Colorado">CO</option>
+                                                <option value="Connecticut ">CT</option>
+                                                <option value="Delaware">DE</option>
+                                                <option value="Florida">FL</option>
+                                                <option value="Georgia">GA</option>
+                                                <option value="Hawaii">HI</option>
+                                                <option value="Idaho">ID</option>
+                                                <option value="Illinois">IL</option>
+                                                <option value="Indiana">IN</option>
+                                                <option value="Iowa">IA</option>
+                                                <option value="Kansas ">KS</option>
+                                                <option value="Kentucky">KY</option>
+                                                <option value="Louisiana">LA</option>
+                                                <option value="Maine">ME</option>
+                                                <option value="Maryland">MD</option>
+                                                <option value="Massachusetts">MA</option>
+                                                <option value="Michigan">MI</option>
+                                                <option value="Minnesota">MN</option>
+                                                <option value="Mississippi">MS</option>
+                                                <option value="Missouri">MO</option>
+                                                <option value="Montana">MT</option>
+                                                <option value="Nebraska">NE</option>
+                                                <option value="Nevada">NV</option>
+                                                <option value="New Hampshire">NH</option>
+                                                <option value="New Jersey">NJ</option>
+                                                <option value="New Mexico">NM</option>
+                                                <option value="New York">NY</option>
+                                                <option value="North Carolina">NC</option>
+                                                <option value="North Dakota">ND</option>
+                                                <option value="Ohio">OH</option>
+                                                <option value="Oklahoma">OK</option>
+                                                <option value="Oregon">OR</option>
+                                                <option value="Pennsylvania">PA</option>
+                                                <option value="Rhode Island">RI</option>
+                                                <option value="South Carolina">SC</option>
+                                                <option value="South Dakota">SD</option>
+                                                <option value="Tennessee">TN</option>
+                                                <option value="Texas  ">TX</option>
+                                                <option value="Utah">UT</option>
+                                                <option value="Vermont">VT</option>
+                                                <option value="Virginia">VA</option>
+                                                <option value="Washington">WA</option>
+                                                <option value="West Virginia">WV</option>
+                                                <option value="Wisconsin">WI</option>
+                                                <option value="Wyoming">WY</option>
+                                            </select>
+    
+                                        </div><br>
+    
+                                        <div>
+                                            <label for="Zipcode">Zipcode:</label>
+                                            <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required="" title="7 to 9 characters">
+                                        </div>
+    
+    
+    
+    
+     
+    
+                                        <br>
+                                        <div>
+                                            <input type="submit" value="Save">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+    
+    </script>
     <!-- do not touch-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -349,6 +367,3 @@
     <!-- end of do not touch-->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/main.js"></script>
-</body>
-
-</html>
