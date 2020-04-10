@@ -71,7 +71,7 @@
 
                 mysqli_close($dbc);
 
-                $Valid = "Account Created: Log In".$StateN;
+                $Valid = "Account Created: Log In";
                 $_SESSION['Valid'] = $Valid;
                 $url = "../homepage.php";
                 header("Location: ".$url);
