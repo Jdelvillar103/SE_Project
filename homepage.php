@@ -222,7 +222,7 @@
                 }
                 if (isset($_SESSION['ID']))
                  {
-                     $ID = $_SESSION['ID'];
+                    $ID = $_SESSION['ID'];
                     $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
                     $response = @mysqli_query($dbc,$query);
                      while ($row = mysqli_fetch_array($response))
