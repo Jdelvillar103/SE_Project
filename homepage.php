@@ -229,7 +229,7 @@
                      {
                         $FName = $row['FName'];
                      }
-                     echo '<p style="margin-left:825px; color:white">'.'Welcome '.$FName.'!'.'</p>';
+                     echo '<p style="margin-right:825px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                      session_destroy();
                 }
                 elseif (isset($_SESSION['Unauthorized']))
