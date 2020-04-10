@@ -77,6 +77,23 @@
                 </div>
                 <div class="col-md-3 col-12 text-right">
                     <p class="my-md-4 header-links">
+                        <!-- Beginning of code that only runs when NOT logged in-->
+                        <?php
+                            if(isset($_SESSION['ID']))//If logged in, display login button
+                            {
+                                $ID = $_SESSION['ID'];
+                                $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
+                                $response = @mysqli_query($dbc,$query);
+                                while ($row = mysqli_fetch_array($response))
+                                {
+                                    $FName = $row['FName'];
+                                }
+                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:white">'.'Welcome '.$FName.'!'.'</p>';
+                                
+                                echo '<a class="px-2"  style="color:white; width:auto; border-style: solid; border-color:black; padding: 10px 30px; background-color:red;"href="./Login/logout.php" >Logout</a>';
+                            }
+                            else{
+                        ?>
                         <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
                         <div id="id01" class="modal">
                         
@@ -106,6 +123,8 @@
                                 </div>
                             </form>
                         </div>
+                        
+                        
                         <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
                         <div id="id02" class="modal">
                         
@@ -209,6 +228,10 @@
                                 </div>
                             </form>
                         </div>
+                        <!--End of code that runs when not logged in-->
+                        <?php
+                            }
+                        ?>
                     </p>
                 </div>
             
@@ -218,18 +241,6 @@
                 if (isset($_SESSION['Valid']))
                  {
                      echo '<p style="margin-left:825px; color:green">'.$Valid.'</p>';
-                     session_destroy();
-                }
-                if (isset($_SESSION['ID']))
-                 {
-                    $ID = $_SESSION['ID'];
-                    $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
-                    $response = @mysqli_query($dbc,$query);
-                     while ($row = mysqli_fetch_array($response))
-                     {
-                        $FName = $row['FName'];
-                     }
-                     echo '<p style="margin-right:825px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                      session_destroy();
                 }
                 elseif (isset($_SESSION['Unauthorized']))
