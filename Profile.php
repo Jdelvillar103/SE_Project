@@ -77,136 +77,28 @@
                 </div>
                 <div class="col-md-3 col-12 text-right">
                     <p class="my-md-4 header-links">
-                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
-                        <div id="id01" class="modal">
-                        
-                            <form class="modal-content animate" action="/action_page.php">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                                        title="Close Window">×</span> <br>
-                                    <!-- If you want a header:  <h1 class="text-center">Sign In</h1>-->
-                                </div>
-                        
-                                <div class="container text-left">
-                                    <label><b style="font-size:20px">Email</b></label>
-                                    <input type="text" placeholder="Enter Email" name="email" required>
-                                    <br> <br>
-                                    <label><b style="font-size:20px">Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="psw" required>
-                                    
-                                    <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Login</span></button>
-                                    </div>
-                                </div>
-                        
-                                <div class="container text-left" style="background-color:#f1f1f1">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                        class="cancelbtn">Cancel</button>
-                                    <span class="psw"><a href="#">Forgot password?</a></span>
-                                </div>
-                            </form>
-                        </div>
-                        <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
-                        <div id="id02" class="modal">
-                        
-                            <form class="modal-content animate" action="/action_page.php">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id02').style.display='none'" class="close"
-                                        title="Close Window">×</span> <br>
-                                    <h1 class="text-center" style="font-size:35px">Sign Up</h1>
-                                </div>
-                        
-                                <div class="container text-left">
-                                    <label><b style="font-size:20px">First Name</b></label>
-                                    <input type="text" placeholder="Enter First Name" name="FName">
-                                    <br> <br>
-                                    <label><b style="font-size:20px">Last Name</b></label>
-                                    <input type="text" placeholder="Enter Last Name" name="LName">
-                                    <br> <br>
-                                    <label><b style="font-size:20px">Email</b></label>
-                                    <input type="text" placeholder="Enter Email" name="NewEmail">
-                                    <br> <br>
-                                    <label><b style="font-size:20px">Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="Npass">
-                                    <br> <br>
-                                    <label><b style="font-size:20px">Confirm Password</b></label>
-                                    <input type="password" placeholder="Confirm Password" name="2pass">
-                                    <br><br>
-                                    <label><b style="font-size:20px">Address</b></label>
-                                    <input type="text" name="Address" id="address" placeholder="Address">
-                                    <br><br>
-                                    <label><b style="font-size:20px">City</b></label>
-                                    <input type="text" name="City" id="city" placeholder="City">
-                                    <br> <br>
-    
-                                    <label ><b style="font-size:20px">State</b></label>
-                                    <select name="StateN" id="select-choice">
-                                        <option value="0" selected="" disabled="">Select</option>
-                                        <option value="Alabama">AL</option>
-                                        <option value="Alaska">AK</option>
-                                        <option value="Arizona">AZ</option>
-                                        <option value="Arkansas">AR</option>
-                                        <option value="California">CA</option>
-                                        <option value="Colorado">CO</option>
-                                        <option value="Connecticut ">CT</option>
-                                        <option value="Delaware">DE</option>
-                                        <option value="Florida">FL</option>
-                                        <option value="Georgia">GA</option>
-                                        <option value="Hawaii">HI</option>
-                                        <option value="Idaho">ID</option>
-                                        <option value="Illinois">IL</option>
-                                        <option value="Indiana">IN</option>
-                                        <option value="Iowa">IA</option>
-                                        <option value="Kansas ">KS</option>
-                                        <option value="Kentucky">KY</option>
-                                        <option value="Louisiana">LA</option>
-                                        <option value="Maine">ME</option>
-                                        <option value="Maryland">MD</option>
-                                        <option value="Massachusetts">MA</option>
-                                        <option value="Michigan">MI</option>
-                                        <option value="Minnesota">MN</option>
-                                        <option value="Mississippi">MS</option>
-                                        <option value="Missouri">MO</option>
-                                        <option value="Montana">MT</option>
-                                        <option value="Nebraska">NE</option>
-                                        <option value="Nevada">NV</option>
-                                        <option value="New Hampshire">NH</option>
-                                        <option value="New Jersey">NJ</option>
-                                        <option value="New Mexico">NM</option>
-                                        <option value="New York">NY</option>
-                                        <option value="North Carolina">NC</option>
-                                        <option value="North Dakota">ND</option>
-                                        <option value="Ohio">OH</option>
-                                        <option value="Oklahoma">OK</option>
-                                        <option value="Oregon">OR</option>
-                                        <option value="Pennsylvania">PA</option>
-                                        <option value="Rhode Island">RI</option>
-                                        <option value="South Carolina">SC</option>
-                                        <option value="South Dakota">SD</option>
-                                        <option value="Tennessee">TN</option>
-                                        <option value="Texas  ">TX</option>
-                                        <option value="Utah">UT</option>
-                                        <option value="Vermont">VT</option>
-                                        <option value="Virginia">VA</option>
-                                        <option value="Washington">WA</option>
-                                        <option value="West Virginia">WV</option>
-                                        <option value="Wisconsin">WI</option>
-                                        <option value="Wyoming">WY</option>
-                                    </select><br><br>
-                                    <label><b style="font-size:20px">Zipcode</b></label>
-                                    <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required title="7 to 9 characters">
-                                </div><br>
 
-                                    <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Create Account</span></button>
-                                    </div>
-                                <br>
-                                <div class="container text-left" style="background-color:#f1f1f1">
-                                    <button type="button" onclick="document.getElementById('id02').style.display='none'"
-                                        class="cancelbtn">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
+                        <!-- Beginning of code that only runs when NOT logged in-->
+                        <?php
+                            if(isset($_SESSION['ID']))//If logged in, display login button
+                            {
+                                $ID = $_SESSION['ID'];
+                                $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
+                                $response = @mysqli_query($dbc,$query);
+                                while ($row = mysqli_fetch_array($response))
+                                {
+                                    $FName = $row['FName'];
+                                }
+                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
+                                
+                                echo '<a class="px-2"  style="color:white; width:auto; border-style: solid; border-color:black; padding: 10px 30px; background-color:red;"href="./Login/logout.php" >Logout</a>';
+                            }
+                            else{
+                                header("location:homepage.php");
+                                die;
+                            }
+                        ?>
+                        
                     </p>
                 </div>
             </div>
@@ -244,14 +136,34 @@
     </header>
     <!-- Main Section-->
     <main>
-    </body>
-
-    </html>
+    
     <div class ="container">
                 <div class = row>
                     <div class = "col-lg-2 col-md-2 col-xs-2" >
                         <div class = "col1">
-    
+<?php
+    $sql = "SELECT * FROM `profile` WHERE `ID_Profile` = '$ID'";
+    $results = mysqli_query($dbc,$sql);
+    $resultCheck = mysqli_num_rows($results);
+    if($resultCheck>0){
+        while($row = mysqli_fetch_assoc($results)){
+            $FName = $row['FName'];
+            $LName = $row['LName'];
+            $Address = $row['Address'];
+            $City = $row['City'];
+            $ID_State = $row['State'];
+            $Zipcode = $row['Zipcode'];
+            $Email = $row['Email'];
+            $Profile = $row['ID_Profile'];
+
+        }
+        mysqli_close($dbc);
+    }
+    else
+    {
+      mysqli_close($dbc);
+    }
+?>
                             
     
                         </div>
@@ -265,97 +177,144 @@
     
                             <div class="container">
                                 <div class="login">
-                                    <h1>Update Your Profile</h1>
-                                    <br><br>
-                                    <form>
+                                    <h1 style="font-size:50px" class="text-center">Update Your Profile</h1>
+                                    <br>
+                <!-- PHP Display-->
+                <?php
+                $fullurl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+
+                if (strpos($fullurl,"profile=empty") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'All fields are were not filled'.'</b>'.'</p>';
+                
+                }
+                if((strpos($fullurl,"profile=inputlarge") == true)){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Invaild input size, try a smaller size or contact the administrator'.'</b>'.'</p>';
+
+                }
+
+                if((strpos($fullurl,"profile=variable") == true)){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Please use only letters'.'</b>'.'</p>';
+
+
+                }
+
+                if (strpos($fullurl,"profile=number") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Please use a number'.'</b>'.'</p>';
+
+
+                }
+
+                if (strpos($fullurl,"profile=email") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Please use a valid email address'.'</b>'.'</p>';
+
+
+                }
+
+                if (strpos($fullurl,"profile=ziplarge") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Please use a smaller zip code'.'</b>'.'</p>';
+
+
+                }
+
+                if (strpos($fullurl,"profile=duplicate") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Duplicate email address'.'</b>'.'</p>';
+
+
+                }
+
+                if (strpos($fullurl,"profile=success") == true){
+                    echo '<p class="px-2 text-right" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:green">'.'<b>'.'Update Successful'.'</b>'.'</p>';
+
+                }
+
+            ?>
+                                    <form  action="../update.php" method="post">
                                         <div>
-                                            <label for="first-name">First Name:</label>
-                                            <input type="text" name="FName" id="first-name" placeholder="John" required> <br><br>
-                                            <label for="last-name">Last Name:</label>
-                                            <input type="text" name="LName" id="last-name" placeholder="Smith" required><br><br>
+                                            <label for="first-name" style="font-size:20px">First Name:</label>
+                                            <input type="text" name="FName" id="first-name" value="<?php echo $FName; ?>" contenteditable="true"> <br><br>
+                                            <label for="last-name" style="font-size:20px">Last Name:</label>
+                                            <input type="text" name="LName" id="last-name" value="<?php echo $LName; ?>" contenteditable="true"><br><br>
                                         </div>
                                         <div>
-                                            <label for="address1">Address 1:</label>
-                                            <input type="text" name="address" id="address" placeholder="Address" required> <br><br>
-                                            <label for="address1">Address 2:</label>
-                                            <input type="text" name="address2" id="address2" placeholder="Address"> <br><br>
-                                            <label for="city">City:</label>
-                                            <input type="text" name="City" id="city" placeholder="City" required=""> <br> <br>
+                                            <label for="address1" style="font-size:20px">Address 1:</label>
+                                            <input type="text" name="Address" id="address" value="<?php echo $Address; ?>" contenteditable="true"> <br><br>
+                                            <label for="city" style="font-size:20px">City:</label>
+                                            <input type="text" name="City" id="city" value="<?php echo $City; ?>" contenteditable="true"> <br> <br>
     
-                                            <label for="select-choice"  required="">State:</label>
-                                            <select name="select-choice" id="select-choice">
-                                                <option value="0" selected="" disabled="">Select</option>
-                                                <option value="Alabama">AL</option>
-                                                <option value="Alaska">AK</option>
-                                                <option value="Arizona">AZ</option>
-                                                <option value="Arkansas">AR</option>
-                                                <option value="California">CA</option>
-                                                <option value="Colorado">CO</option>
-                                                <option value="Connecticut ">CT</option>
-                                                <option value="Delaware">DE</option>
-                                                <option value="Florida">FL</option>
-                                                <option value="Georgia">GA</option>
-                                                <option value="Hawaii">HI</option>
-                                                <option value="Idaho">ID</option>
-                                                <option value="Illinois">IL</option>
-                                                <option value="Indiana">IN</option>
-                                                <option value="Iowa">IA</option>
-                                                <option value="Kansas ">KS</option>
-                                                <option value="Kentucky">KY</option>
-                                                <option value="Louisiana">LA</option>
-                                                <option value="Maine">ME</option>
-                                                <option value="Maryland">MD</option>
-                                                <option value="Massachusetts">MA</option>
-                                                <option value="Michigan">MI</option>
-                                                <option value="Minnesota">MN</option>
-                                                <option value="Mississippi">MS</option>
-                                                <option value="Missouri">MO</option>
-                                                <option value="Montana">MT</option>
-                                                <option value="Nebraska">NE</option>
-                                                <option value="Nevada">NV</option>
-                                                <option value="New Hampshire">NH</option>
-                                                <option value="New Jersey">NJ</option>
-                                                <option value="New Mexico">NM</option>
-                                                <option value="New York">NY</option>
-                                                <option value="North Carolina">NC</option>
-                                                <option value="North Dakota">ND</option>
-                                                <option value="Ohio">OH</option>
-                                                <option value="Oklahoma">OK</option>
-                                                <option value="Oregon">OR</option>
-                                                <option value="Pennsylvania">PA</option>
-                                                <option value="Rhode Island">RI</option>
-                                                <option value="South Carolina">SC</option>
-                                                <option value="South Dakota">SD</option>
-                                                <option value="Tennessee">TN</option>
-                                                <option value="Texas  ">TX</option>
-                                                <option value="Utah">UT</option>
-                                                <option value="Vermont">VT</option>
-                                                <option value="Virginia">VA</option>
-                                                <option value="Washington">WA</option>
-                                                <option value="West Virginia">WV</option>
-                                                <option value="Wisconsin">WI</option>
-                                                <option value="Wyoming">WY</option>
+                                            <label style="font-size:20px">State: </label>
+                                            <select name="StateN" id="select-choice">
+                                                <option <?php if ($ID_State == 1) echo 'selected="selected"'; ?> value=1>Alabama</option>
+                                                <option <?php if ($ID_State == 2) echo 'selected="selected"'; ?> value=2>Alaska</option>
+                                                <option <?php if ($ID_State == 3) echo 'selected="selected"'; ?> value=3>Arizona</option>
+                                                <option <?php if ($ID_State == 4) echo 'selected="selected"'; ?> value=4>Arkansas</option>
+                                                <option <?php if ($ID_State == 5) echo 'selected="selected"'; ?> value=5>California</option>
+                                                <option <?php if ($ID_State == 6) echo 'selected="selected"'; ?> value=6>Colorado</option>
+                                                <option <?php if ($ID_State == 7) echo 'selected="selected"'; ?> value=7>Connecticut</option>
+                                                <option <?php if ($ID_State == 8) echo 'selected="selected"'; ?> value=8>Delaware</option>
+                                                <option <?php if ($ID_State == 9) echo 'selected="selected"'; ?> value=9>Florida</option>
+                                                <option <?php if ($ID_State == 10) echo 'selected="selected"'; ?> value=10>Georgia</option>
+                                                <option <?php if ($ID_State == 11) echo 'selected="selected"'; ?> value=11>Hawaii</option>
+                                                <option <?php if ($ID_State == 12) echo 'selected="selected"'; ?> value=12>Idaho</option>
+                                                <option <?php if ($ID_State == 13) echo 'selected="selected"'; ?> value=13>Illinois</option>
+                                                <option <?php if ($ID_State == 14) echo 'selected="selected"'; ?> value=14>Indiana</option>
+                                                <option <?php if ($ID_State == 15) echo 'selected="selected"'; ?> value=15>Iowa</option>
+                                                <option <?php if ($ID_State == 16) echo 'selected="selected"'; ?> value=16>Kansas</option>
+                                                <option <?php if ($ID_State == 17) echo 'selected="selected"'; ?> value=17>Kentucky</option>
+                                                <option <?php if ($ID_State == 18) echo 'selected="selected"'; ?> value=18>Louisiana</option>
+                                                <option <?php if ($ID_State == 19) echo 'selected="selected"'; ?> value=19>Maine</option>
+                                                <option <?php if ($ID_State == 20) echo 'selected="selected"'; ?> value=20>Maryland</option>
+                                                <option <?php if ($ID_State == 21) echo 'selected="selected"'; ?> value=21>Massachusetts</option>
+                                                <option <?php if ($ID_State == 22) echo 'selected="selected"'; ?> value=22>Michigan</option>
+                                                <option <?php if ($ID_State == 23) echo 'selected="selected"'; ?> value=23>Minnesota</option>
+                                                <option <?php if ($ID_State == 24) echo 'selected="selected"'; ?> value=24>Mississippi</option>
+                                                <option <?php if ($ID_State == 25) echo 'selected="selected"'; ?> value=25>Missouri</option>
+                                                <option <?php if ($ID_State == 26) echo 'selected="selected"'; ?> value=26>Montana</option>
+                                                <option <?php if ($ID_State == 27) echo 'selected="selected"'; ?> value=27>Nebraska</option>
+                                                <option <?php if ($ID_State == 28) echo 'selected="selected"'; ?> value=28>Nevada</option>
+                                                <option <?php if ($ID_State == 29) echo 'selected="selected"'; ?> value=29>New Hampshire</option>
+                                                <option <?php if ($ID_State == 30) echo 'selected="selected"'; ?> value=30>New Jersey</option>
+                                                <option <?php if ($ID_State == 31) echo 'selected="selected"'; ?> value=31>New Mexico</option>
+                                                <option <?php if ($ID_State == 32) echo 'selected="selected"'; ?> value=32>New York</option>
+                                                <option <?php if ($ID_State == 33) echo 'selected="selected"'; ?> value=33>North Carolina</option>
+                                                <option <?php if ($ID_State == 34) echo 'selected="selected"'; ?> value=34>North Dakota</option>
+                                                <option <?php if ($ID_State == 35) echo 'selected="selected"'; ?> value=35>Ohio</option>
+                                                <option <?php if ($ID_State == 36) echo 'selected="selected"'; ?> value=36>Oklahoma</option>
+                                                <option <?php if ($ID_State == 37) echo 'selected="selected"'; ?> value=37>Oregon</option>
+                                                <option <?php if ($ID_State == 38) echo 'selected="selected"'; ?> value=38>Pennsylvania</option>
+                                                <option <?php if ($ID_State == 39) echo 'selected="selected"'; ?> value=39>Rhode Island</option>
+                                                <option <?php if ($ID_State == 40) echo 'selected="selected"'; ?> value=40>South Carolina</option>
+                                                <option <?php if ($ID_State == 41) echo 'selected="selected"'; ?> value=41>South Dakota</option>
+                                                <option <?php if ($ID_State == 42) echo 'selected="selected"'; ?> value=42>Tennessee</option>
+                                                <option <?php if ($ID_State == 43) echo 'selected="selected"'; ?> value=43>Texas</option>
+                                                <option <?php if ($ID_State == 44) echo 'selected="selected"'; ?> value=44>Utah</option>
+                                                <option <?php if ($ID_State == 45) echo 'selected="selected"'; ?> value=45>Vermont</option>
+                                                <option <?php if ($ID_State == 46) echo 'selected="selected"'; ?> value=46>Virginia</option>
+                                                <option <?php if ($ID_State == 47) echo 'selected="selected"'; ?> value=47>Washington</option>
+                                                <option <?php if ($ID_State == 48) echo 'selected="selected"'; ?> value=48>West Virginia</option>
+                                                <option <?php if ($ID_State == 49) echo 'selected="selected"'; ?> value=49>Wisconsin</option>
+                                                <option <?php if ($ID_State == 50) echo 'selected="selected"'; ?> value=50>Wyoming</option>
                                             </select>
     
                                         </div><br>
     
                                         <div>
-                                            <label for="Zipcode">Zipcode:</label>
-                                            <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required="" title="7 to 9 characters">
+                                            <label for="Zipcode" style="font-size:20px">Zipcode:</label>
+                                            <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" value="<?php echo $Zipcode; ?>" contenteditable="true" title="7 to 9 characters">
                                         </div>
-    
-    
-    
-    
-     
     
                                         <br>
                                         <div>
-                                            <input type="submit" value="Save">
+                                            <input type="hidden" name="profile" value="<?php echo $Profile; ?>">
+                                            <input type="hidden" name="email" value="<?php echo $Email; ?>">
+                                            <button type="submit" id="signin_button" name="submit"><span style="font-size:18px">Save Changes</span></button>
+                                            <button type = "reset" class= "cancelbtn" name="reset">Reset</button>
                                         </div>
                                     </form>
+            
                                 </div>
                             </div>
+        </main>
     
     </script>
     <!-- do not touch-->
@@ -371,3 +330,6 @@
     <!-- end of do not touch-->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/main.js"></script>
+
+                        </body>
+                        </html>

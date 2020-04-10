@@ -1,140 +1,78 @@
+<?php
+    session_start();
+
+    require_once('./mysql-connect.php');
+    ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
         <title></title>
     </head>
     <body>
+
     <?php
-    session_start();
+ 
 
-    require_once('../mysql-connect.php');
+    if(isset($_POST['submit'])){
+		$first = $_POST['FName'];
+		$last = $_POST['LName'];
+		$address = $_POST['Address'];
+		$city = $_POST['City'];
+		$state = $_POST['StateN'];
+		$zipcode = $_POST['Zipcode'];
+		$Email = $_POST['Email'];
+		$Profile = $_POST['profile'];
 
-    $email = $_POST['NewEmail'];
-    $FName = $_POST['FName'];
-    $LName = $_POST['LName'];
-    $Address = $_POST['Address'];
-    $City = $_POST['City'];
-    $StateN = $_POST['StateN'];
-    $Zipcode = $_POST['Zipcode'];
-    $Password = $_POST['Npass'];
-    $CPassword = $_POST['2pass'];
+		$sqlquery = "SELECT * FROM `profile` WHERE ID_Profile <> '$Profile' AND `Email` = '$Email';";
+		$retrival = mysqli_query( $dbc, $sqlquery );
+		$num_rows = mysqli_num_rows($retrival);
 
-		if(filter_var($email, FILTER_VALIDATE_EMAIL))
-		{
-      $query = "SELECT P.Email FROM profile AS P WHERE P.Email = '$email';";
-      $response = mysqli_query($dbc,$query);
+		$valuelength = max(strlen($first) , strlen($last) , strlen($address) , strlen($state));
 
-      while ($row = mysqli_fetch_array($response))
-      {
-        $RetrivedEmail = $row['Email'];
-        echo $row['Email'];
-      }
-      if ($RetrivedEmail == $email)
-      {
-        mysqli_close($dbc);
-        $Valid = "Email Already Exists: Try Logging in";
-        $_SESSION['Valid'] = $Valid;
-        $url = "../homepage.php";
-        header("Location: ".$url);
-        exit();
-      }
-      if (ctype_alpha($FName))
-      {
-        if (ctype_alpha($LName))
-        {
-          $Address = filter_var($Address,FILTER_SANITIZE_SPECIAL_CHARS);
-          if(ctype_alpha($City))
-          {
-            if(filter_var($Zipcode,FILTER_VALIDATE_INT) && strlen($Zipcode) == 5)
-            {
-              if ($Password == $CPassword)
-              {
-                $query = "SELECT S.ID_State FROM states AS S WHERE S.StateName = '$StateN'";
-                $response = $dbc->query($query);
-                while ($row = mysqli_fetch_array($response))
-                {
-                  $ID_State = $row['ID_State'];
-                }
 
-                $query = "INSERT INTO profile(Email,FName,LName,Address,City,State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
-                $result = $dbc->query($query);
-
-                $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email";
-                $response = $dbc->query($query);
-                while($row = mysqli_fetch_array($response))
-                {
-                  $ID_Profile = $row['ID_Profile'];
-                }
-
-                $query = "INSERT INTO credentials VALUES('$ID_Profile','$Password')";
-                $dbc->query($query);
-
-                mysqli_close($dbc);
-
-                $Valid = "Account Created: Log In".$StateN;
-                $_SESSION['Valid'] = $Valid;
-                $url = "../homepage.php";
-                header("Location: ".$url);
-                exit();
-              }
-              else
-              {
-                mysqli_close($dbc);
-                $Valid = "INVALID: Passwords Don't Match";
-                $_SESSION['Valid'] = $Valid;
-                $url = "../homepage.php";
-                header("Location: ".$url);
-                exit();
-              }
-            }
-            else
-            {
-              mysqli_close($dbc);
-              $Valid = "INVALID: Zip Code MUST be 5 Integers";
-              $_SESSION['Valid'] = $Valid;
-              $url = "../homepage.php";
-              header("Location: ".$url);
-              exit();
-        		}
-          }
-          else
-          {
-            mysqli_close($dbc);
-            $Valid = "INVALID: City must only contain characters";
-            $_SESSION['Valid'] = $Valid;
-            $url = "../homepage.php";
-            header("Location: ".$url);
-            exit();
-      		}
-        }
-        else
-        {
-          mysqli_close($dbc);
-          $Valid = "INVALID: Last Name must be only char";
-          $_SESSION['Valid'] = $Valid;
-          $url = "../homepage.php";
-          header("Location: ".$url);
-          exit();
-    		}
-      }
-      else
-      {
-        mysqli_close($dbc);
-        $Valid = "INVALID: First Name must be only char";
-        $_SESSION['Valid'] = $Valid;
-        $url = "../homepage.php";
-        header("Location: ".$url);
-        exit();
-  		}
+		if(empty($first) || empty($last) || empty($address)|| empty($city) || empty($state) || empty($zipcode)){
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=empty");
+			exit();
 		}
-		else
-    {
-      $Valid = "INVALID EMAIL: example@gmail.com";
-      $_SESSION['Valid'] = $Valid;
-      $url = "../homepage.php";
-      header("Location: ".$url);
+		elseif (!preg_match("/^[a-zA-Z ]*$/",$first) || !preg_match("/^[a-zA-Z ]*$/",$last) || !preg_match("/^[a-zA-Z ]*$/",$city) ) {
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=variable");
+			exit();
+
+		}
+		elseif($valuelength > 20){
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=inputlarge");
+			exit();
+		}
+		elseif(!preg_match("/^[0-9]{5}$/",$zipcode)){
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=ziplarge");
+			exit();
+		}
+
+		elseif(!preg_match("/[0-9]/",$zipcode)){
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=number");
+			exit();
+		}
+		
+		elseif($num_rows > 0 ){
+      mysqli_close($dbc);
+			header("Location: ./profile.php?profile=duplicate");
+			exit();
+		}
+		else{
+
+			$sql = "UPDATE profile SET Email = '$Email',FName = '$first',LName = '$last',Address = '$address',City = '$city',State = '$state',Zipcode = '$zipcode' WHERE ID_Profile = '$ID';";
+      mysqli_query( $dbc, $sql );
+      mysqli_close($dbc);
+      header("Location: ./profile.php?profile=success");
       exit();
 		}
+
+	}
 
     ?>
     </body>

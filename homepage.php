@@ -158,7 +158,7 @@
                                     <input type="text" name="City" id="city" placeholder="City" required>
                                     <br> <br>
     
-                                    <label ><b style="font-size:20px">State</b></label>
+                                    <label><b style="font-size:20px">State</b></label>
                                     <select name="StateN" id="select-choice">
                                         <option value="0" selected="" disabled="">Select</option>
                                         <option value="Alabama">AL</option>
@@ -258,9 +258,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/homepage.php">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Profile.php">Profile</a>
-                    </li>
+                    <?php
+                        if(isset($_SESSION['ID']))
+                        {
+                    echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="/Profile.php">Profile</a>';
+                    echo '</li>';
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Shop</a>
                     </li>
