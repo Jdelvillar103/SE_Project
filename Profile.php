@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-3 col-12 text-right">
                     <p class="my-md-4 header-links">
-                        <a class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
+                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
                         <div id="id01" class="modal">
                         
                             <form class="modal-content animate" action="/action_page.php">
