@@ -247,17 +247,14 @@ INSERT INTO `categories` (`ID_Category`, `Category_Name`) VALUES
 
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
-  `ID_Session` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `ID_Cart` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   `ID_Cust` INT(6) UNSIGNED ZEROFILL,
-  `Product_Num` INT(7) UNSIGNED ZEROFILL,
+  `DateCreated` datetime DEFAULT CURRENT_TIMESTAMP,
   `CStatus` INT(1) DEFAULT 1,
-  PRIMARY KEY (`ID_Session`),
+  PRIMARY KEY (`ID_Cart`),
   CONSTRAINT `FK_Cust_ID`
     FOREIGN KEY (`ID_Cust`)
     REFERENCES `e_commerce`.`profile` (`ID_Profile`),
-  CONSTRAINT `FK_Prod_ID`
-    FOREIGN KEY (`Product_Num`)
-    REFERENCES `e_commerce`.`product` (`ID_Product`),
   CONSTRAINT `FK_CStatus`
     FOREIGN KEY (`CStatus`)
     REFERENCES `e_commerce`.`status_cart` (`ID_CStatus`)
@@ -285,7 +282,21 @@ INSERT INTO `status_cart` (`ID_CStatus`, `StatusName`) VALUES
 
 
 
-
+DROP TABLE IF EXISTS `cartItems`;
+CREATE TABLE IF NOT EXISTS `cartItems` (
+  `ID_CartItem` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `CartID` INT(8) UNSIGNED NOT NULL,
+  `ProductID` INT(7) UNSIGNED NOT NULL,
+  `Quantity` INT(2) DEFAULT 1,
+  `Price` decimal(8,2) ,
+  PRIMARY KEY (`ID_CartItem`),
+  CONSTRAINT `FK_CartID`
+    FOREIGN KEY (`CartID`)
+    REFERENCES `e_commerce`.`cart` (`ID_Cart`),
+  CONSTRAINT `FK_ProductID`
+    FOREIGN KEY (`ProductID`)
+    REFERENCES `e_commerce`.`products` (`ID_Product`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
