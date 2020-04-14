@@ -203,7 +203,7 @@
                                         <option value="South Carolina">SC</option>
                                         <option value="South Dakota">SD</option>
                                         <option value="Tennessee">TN</option>
-                                        <option value="Texas  ">TX</option>
+                                        <option value="Texas">TX</option>
                                         <option value="Utah">UT</option>
                                         <option value="Vermont">VT</option>
                                         <option value="Virginia">VA</option>
