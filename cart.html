@@ -166,127 +166,72 @@
     <main>
     </body>
 
-    </html>
-    <div class ="container">
-                <div class = row>
-                    <div class = "col-lg-2 col-md-2 col-xs-2" >
-                        <div class = "col1">
-    
-                            
-    
-                        </div>
-                    </div>
-                    <div class = "col-lg-8 col-md-8 col-xs-8">
-                        <div class = "col2">
-    
-    
-    
-    
-    
-                            <div class="container">
-                                <div class="login">
-                                    <h1>Update your Profile</h1>
-                                    <form>
-                                        <div>
-                                            <label for="first-name">First Name:</label>
-                                            <input type="text" name="first-name" id="first-name" placeholder="John" required=""> <br>
-                                            <label for="last-name">Last Name:</label>
-                                            <input type="text" name="last-name" id="last-name" placeholder="Smith" required="">
-                                        </div>
-                                        <div>
-                                            <label for="address1">Address 1:</label>
-                                            <input type="text" name="address1" id="address1" placeholder="Address" required=""> <br>
-                                            <label for="address1">Address 2:</label>
-                                            <input type="text" name="address2" id="address2" placeholder="Address"> <br>
-                                            <label for="city">City:</label>
-                                            <input type="text" name="city" id="city" placeholder="city" required=""> <br> <br>
-    
-                                            <label for="select-choice"  required="">State:</label>
-                                            <select name="select-choice" id="select-choice">
-                                                <option value="0" selected="" disabled="">Select</option>
-                                                <option value="Alabama">AL</option>
-                                                <option value="Alaska">AK</option>
-                                                <option value="Arizona">AZ</option>
-                                                <option value="Arkansas">AR</option>
-                                                <option value="California">CA</option>
-                                                <option value="Colorado">CO</option>
-                                                <option value="Connecticut ">CT</option>
-                                                <option value="Delaware">DE</option>
-                                                <option value="Florida">FL</option>
-                                                <option value="Georgia">GA</option>
-                                                <option value="Hawaii">HI</option>
-                                                <option value="Idaho">ID</option>
-                                                <option value="Illinois">IL</option>
-                                                <option value="Indiana">IN</option>
-                                                <option value="Iowa">IA</option>
-                                                <option value="Kansas ">KS</option>
-                                                <option value="Kentucky">KY</option>
-                                                <option value="Louisiana">LA</option>
-                                                <option value="Maine">ME</option>
-                                                <option value="Maryland">MD</option>
-                                                <option value="Massachusetts">MA</option>
-                                                <option value="Michigan">MI</option>
-                                                <option value="Minnesota">MN</option>
-                                                <option value="Mississippi">MS</option>
-                                                <option value="Missouri">MO</option>
-                                                <option value="Montana">MT</option>
-                                                <option value="Nebraska">NE</option>
-                                                <option value="Nevada">NV</option>
-                                                <option value="New Hampshire">NH</option>
-                                                <option value="New Jersey">NJ</option>
-                                                <option value="New Mexico">NM</option>
-                                                <option value="New York">NY</option>
-                                                <option value="North Carolina">NC</option>
-                                                <option value="North Dakota">ND</option>
-                                                <option value="Ohio">OH</option>
-                                                <option value="Oklahoma">OK</option>
-                                                <option value="Oregon">OR</option>
-                                                <option value="Pennsylvania">PA</option>
-                                                <option value="Rhode Island">RI</option>
-                                                <option value="South Carolina">SC</option>
-                                                <option value="South Dakota">SD</option>
-                                                <option value="Tennessee">TN</option>
-                                                <option value="Texas  ">TX</option>
-                                                <option value="Utah">UT</option>
-                                                <option value="Vermont">VT</option>
-                                                <option value="Virginia">VA</option>
-                                                <option value="Washington">WA</option>
-                                                <option value="West Virginia">WV</option>
-                                                <option value="Wisconsin">WI</option>
-                                                <option value="Wyoming">WY</option>
-                                            </select>
-    
-                                        </div>
-    
-                                        <div>
-                                            <label for="Zipcode">Zipcode:</label>
-                                            <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="your Zipcode" required="" title="7 to 9 characters">
-                                        </div>
-    
-    
-    
-    
-     
-    
-                                        <br>
-                                        <div>
-                                            <input type="submit" value="save">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-    
-    </script>
-    <!-- do not touch-->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <!-- end of do not touch-->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./js/main.js"></script>
+    </html><div class="main">
+        <h1>Shopping cart</h1>
+        <h2 class="sub-heading">Free shipping from $100!</h2>
+      
+        <section class="shopping-cart">
+          <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+      
+            <script id="shopping-cart--list-item-template" type="text/template">
+              <li class="_grid shopping-cart--list-item">
+                <div class="_column product-image">
+                  <img class="product-image--img" src="{{=img}}" alt="Item image" />
+                </div>
+                <div class="_column product-info">
+                  <h4 class="product-name">{{=name}}</h4>
+                  <p class="product-desc">{{=desc}}</p>
+                  <div class="price product-single-price">${{=price}}</div>
+                </div>
+                <div class="_column product-modifiers" data-product-price="{{=price}}">
+                  <div class="_grid">
+                    <button class="_btn _column product-subtract">&minus;</button>
+                    <div class="_column product-qty">0</div>
+                    <button class="_btn _column product-plus">&plus;</button>
+                  </div>
+                  <button class="_btn entypo-trash product-remove">Remove</button>
+                  <div class="price product-total-price">$0.00</div>
+                </div>
+              </li>
+            </script>
+      
+          </ol>
+      
+          <footer class="_grid cart-totals">
+            <div class="_column subtotal" id="subtotalCtr">
+              <div class="cart-totals-key">Subtotal</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column shipping" id="shippingCtr">
+              <div class="cart-totals-key">Shipping</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column taxes" id="taxesCtr">
+              <div class="cart-totals-key">Taxes (6%)</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column total" id="totalCtr">
+              <div class="cart-totals-key">Total</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column checkout">
+              <button class="_btn checkout-btn entypo-forward">Checkout</button>
+            </div>
+          </footer>
+      
+        </section>
+      </div>
+</script>
+<!-- do not touch-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<!-- end of do not touch-->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="./js/main.js"></script>
