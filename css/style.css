@@ -297,6 +297,7 @@ span.psw {
     background-color: var(--primary-color);
 }
 
+<<<<<<< HEAD
 [class*="entypo-"]:before { font-family: 'entypo', sans-serif; }
 body {
   background-color: #ecf0f1;
@@ -508,3 +509,5 @@ h1, .sub-heading {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
 }
+=======
+>>>>>>> 8b8a678002e560ab98a596b6a56931b18d3dc40d
