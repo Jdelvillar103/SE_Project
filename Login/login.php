@@ -5,10 +5,10 @@ require_once('../mysql-connect.php');
 
 if(isset($_POST['email']))
 {
-  if(isset($_POST['Password']))
+  if(isset($_POST['psw']))
   {
     $email = $_POST["email"];
-    $password = $_POST["Password"];
+    $password = $_POST["psw"];
 
     $query = "SELECT P.ID_Profile, P.Email, C.Password FROM profile AS P,credentials AS C WHERE P.Email = '$email' && C.Password = '$password';";
     $response = @mysqli_query($dbc,$query);
@@ -20,11 +20,11 @@ if(isset($_POST['email']))
         $tempEmail = $row['Email'];
         $tempPass = $row['Password'];
       }
-      if($email == $tempEmail && $password == $tempPass)
+      if($email = $tempEmail && $password = $tempPass)
       {
         $_SESSION['ID'] = $ID;
         mysqli_close($dbc);
-        $url = "../FuelQuoteInformation/FuelQuotePage.php";
+        $url = "../homepage.php";
         header("Location: ".$url);
         exit();
       }
@@ -33,7 +33,7 @@ if(isset($_POST['email']))
         $Unauthorized = "Email or Password Wrong: Case Sensitive!";
         $_SESSION['Unauthorized'] = $Unauthorized;
         mysqli_close($dbc);
-        $url = "loginPage.php";
+        $url = "../homepage.php";
         header("Location: ".$url);
         exit();
       }
@@ -41,7 +41,7 @@ if(isset($_POST['email']))
     else
     {
       mysqli_close($dbc);
-      $url = "loginPage.php";
+      $url = "../homepage.php";
       header("Location: ".$url);
       exit();
     }
