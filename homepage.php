@@ -279,7 +279,8 @@
                     <i class="fas fa-search p-2"></i>  
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    <i class="fas fa-shopping-basket p-2"></i>  
+                    
+                    <a class="nav-link" href="/Test_Cart/Cart.php"><i class="fas fa-shopping-basket p-2"></i></a> 
                 </li>
             </div>   
         </div>            
