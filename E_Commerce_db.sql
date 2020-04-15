@@ -27,13 +27,13 @@ CREATE TABLE IF NOT EXISTS `profile` (
   PRIMARY KEY (`ID_Profile`),
   UNIQUE INDEX `ID_Profile_UNIQUE` (`ID_Profile` ASC) ,
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
-  CONSTRAINT `profile_ibfk_1` 
-	FOREIGN KEY (`State`) 
+  CONSTRAINT `profile_ibfk_1`
+	FOREIGN KEY (`State`)
     REFERENCES `states` (`StateID`),
-  CONSTRAINT `profile_ibfk_2` 
-	FOREIGN KEY (`Role`) 
-    REFERENCES `user_roles` (`ID_URoles`)) 
-  
+  CONSTRAINT `profile_ibfk_2`
+	FOREIGN KEY (`Role`)
+    REFERENCES `user_roles` (`ID_URoles`))
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = latin1;
@@ -203,19 +203,44 @@ CREATE TABLE IF NOT EXISTS `products` (
   `PrName` VARCHAR(50) NOT NULL,
   `PrDesc` VARCHAR(120) NOT NULL,
   `Price` DECIMAL(8,2) NOT NULL,
-  PRIMARY KEY (`ID_Product`)
+  `ImageName` VARCHAR(25),
+  `Category` INT(1) UNSIGNED NOT NULL,
+  PRIMARY KEY (`ID_Product`),
+  CONSTRAINT `FK_Category`
+    FOREIGN KEY (`Category`)
+    REFERENCES `e_commerce`.`categories` (`ID_Category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`PrName`, `PrDesc`, `Price`) VALUES
-('Sofa', 'A long, comfy chair that seats multiple people.', 800.00),
-('Dining Chair', 'A chair intented to matched with a dining table. It will be comfortable with the included cushion', 250.00),
-('Vase', 'A glass container that can hold liquids. Intended for flowers, but you do you.', 50.00),
-('Frame', 'A hangable holder for pictures and other small memorable items. I guess maybe pressed flowers as well.', 10.00),
-('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy, candy...do you see where I am going with this?', 800.00);
+INSERT INTO `products` (`PrName`, `PrDesc`, `Price`, `ImageName`, `Category`) VALUES
+('Sofa', 'A long, comfy chair that seats multiple people.', 800.00, 'Sofa', 1),
+('Dining Chair', 'A chair intented to matched with a dining table. It will be comfortable with the included cushion', 250.00, 'Dining_Chair', 1),
+('Vase', 'A glass container that can hold liquids. Intended for flowers, but you do you.', 50.00, 'Vase', 1),
+('Frame', 'A hangable holder for pictures and other small memorable items. I guess maybe pressed flowers as well.', 10.00, 'Frame', 1),
+('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy, candy...do you see where I am going with this?', 800.00, 'Small_Jar', 1);
+
+-- -----------------------------------------------------
+-- Table `e_commerce`.`categories`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `ID_Category` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Category_Name` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`ID_Category`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `categories` (`ID_Category`, `Category_Name`) VALUES
+(1, 'Furniture'),
+(2, 'Appliances'),
+(3, 'Electronics');
 
 -- -----------------------------------------------------
 -- Table `e_commerce`.`cart`
