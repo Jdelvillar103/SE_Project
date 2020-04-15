@@ -27,13 +27,13 @@ CREATE TABLE IF NOT EXISTS `profile` (
   PRIMARY KEY (`ID_Profile`),
   UNIQUE INDEX `ID_Profile_UNIQUE` (`ID_Profile` ASC) ,
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
-  CONSTRAINT `profile_ibfk_1` 
-	FOREIGN KEY (`State`) 
-    REFERENCES `states` (`ID_State`),
-  CONSTRAINT `profile_ibfk_2` 
-	FOREIGN KEY (`Role`) 
-    REFERENCES `user_roles` (`ID_URoles`)) 
-  
+  CONSTRAINT `profile_ibfk_1`
+	FOREIGN KEY (`State`)
+    REFERENCES `states` (`StateID`),
+  CONSTRAINT `profile_ibfk_2`
+	FOREIGN KEY (`Role`)
+    REFERENCES `user_roles` (`ID_URoles`))
+
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = latin1;
@@ -130,17 +130,17 @@ INSERT INTO `card_type` (`ID_CType`, `CTypeN`) VALUES
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
-  `ID_State` TINYINT(4) NOT NULL AUTO_INCREMENT,
+  `StateID` TINYINT(4) NOT NULL AUTO_INCREMENT,
   `StateAbbreviation` CHAR(2) NOT NULL,
   `StateName` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`ID_State`)
+  PRIMARY KEY (`StateID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `states`
 --
 
-INSERT INTO `states` (`ID_State`, `StateAbbreviation`, `StateName`) VALUES
+INSERT INTO `states` (`StateID`, `StateAbbreviation`, `StateName`) VALUES
 (1, 'AL', 'Alabama'),
 (2, 'AK', 'Alaska'),
 (3, 'AZ', 'Arizona'),
@@ -248,14 +248,17 @@ INSERT INTO `categories` (`ID_Category`, `Category_Name`) VALUES
 
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
-  `ID_Cart` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `ID_Session` INT(8) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   `ID_Cust` INT(6) UNSIGNED ZEROFILL,
-  `DateCreated` datetime DEFAULT CURRENT_TIMESTAMP,
+  `Product_Num` INT(7) UNSIGNED ZEROFILL,
   `CStatus` INT(1) DEFAULT 1,
-  PRIMARY KEY (`ID_Cart`),
+  PRIMARY KEY (`ID_Session`),
   CONSTRAINT `FK_Cust_ID`
     FOREIGN KEY (`ID_Cust`)
     REFERENCES `e_commerce`.`profile` (`ID_Profile`),
+  CONSTRAINT `FK_Prod_ID`
+    FOREIGN KEY (`Product_Num`)
+    REFERENCES `e_commerce`.`product` (`ID_Product`),
   CONSTRAINT `FK_CStatus`
     FOREIGN KEY (`CStatus`)
     REFERENCES `e_commerce`.`status_cart` (`ID_CStatus`)
@@ -283,21 +286,7 @@ INSERT INTO `status_cart` (`ID_CStatus`, `StatusName`) VALUES
 
 
 
-DROP TABLE IF EXISTS `cartItems`;
-CREATE TABLE IF NOT EXISTS `cartItems` (
-  `ID_CartItem` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `CartID` INT(8) UNSIGNED NOT NULL,
-  `ProductID` INT(7) UNSIGNED NOT NULL,
-  `Quantity` INT(2) DEFAULT 1,
-  `Price` decimal(8,2) ,
-  PRIMARY KEY (`ID_CartItem`),
-  CONSTRAINT `FK_CartID`
-    FOREIGN KEY (`CartID`)
-    REFERENCES `e_commerce`.`cart` (`ID_Cart`),
-  CONSTRAINT `FK_ProductID`
-    FOREIGN KEY (`ProductID`)
-    REFERENCES `e_commerce`.`products` (`ID_Product`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

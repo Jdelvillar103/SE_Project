@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,72 +164,75 @@
     </header>
     <!-- Main Section-->
     <main>
+    </body>
+    <!-- Start cart -->
 
-        <!--- First Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider">
-                <div class="slider-one">
-                <!-- Add products to slider-->
-                    <div>
-                        <img src"./assets/item-1.jpg" class="img-fluid" alt="Banner 1"/>
-                    </div>
+    </html><div class="main">
+        <h1>Shopping cart</h1>
+        <h2 class="sub-heading">Free shipping from $100!</h2>
+      
+        <section class="shopping-cart">
+          <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+      
+            <script id="shopping-cart--list-item-template" type="text/template">
+              <li class="_grid shopping-cart--list-item">
+                <div class="_column product-image">
+                  <img class="product-image--img" src="{{=img}}" alt="Item image" />
                 </div>
+                <div class="_column product-info">
+                  <h4 class="product-name">{{=name}}</h4>
+                  <p class="product-desc">{{=desc}}</p>
+                  <div class="price product-single-price">${{=price}}</div>
+                </div>
+                <div class="_column product-modifiers" data-product-price="{{=price}}">
+                  <div class="_grid">
+                    <button class="_btn _column product-subtract">&minus;</button>
+                    <div class="_column product-qty">0</div>
+                    <button class="_btn _column product-plus">&plus;</button>
+                  </div>
+                  <button class="_btn entypo-trash product-remove">Remove</button>
+                  <div class="price product-total-price">$0.00</div>
+                </div>
+              </li>
+            </script>
+      
+          </ol>
+      
+          <footer class="_grid cart-totals">
+            <div class="_column subtotal" id="subtotalCtr">
+              <div class="cart-totals-key">Subtotal</div>
+              <div class="cart-totals-value">$0.00</div>
             </div>
-         <div class="slider-btn">
-            <span class="prev position-top"><i class="fas fa-chevron-left"></i></span>
-            <span class="next position-top right-0"><i class="fas fa-chevron-right"></i></span>
-         </div>   
-        </div>
-        <!--- First Slider-->
-
-        <!-- Second Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider-two px-md-4"></div>
-                <div class="row slider-two text-center">
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                    <!-- add image src-->
-                        <img src="./assets/id-9-cat-1.jpg" alt="Product 1">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                    <!-- add image src-->
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                        <img src="./assets/id-9-cat-2.jpg" alt="Product 2">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                </div>
-                <div class="slider-btn">
-                    <span class="prev position-top"><i class="fas fa-chevron-left fa-2x text-secondary"></i></span>
-                    <span class="next position-top right-0"><i class="fas fa-chevron-right fa-2x text-secondary"></i></span>
-                </div>   
-            </div>       
-        </div>
-        <!--/Second Slider-->
-    </main>
-    <!-- Main Section-->
-    <footer></footer>
-
-    <!--For the Pop Up Window-->
-    <script>
-        var modal = document.getElementById('id01');
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        } 
-    </script>
-    <!-- do not touch-->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <!-- end of do not touch-->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./js/main.js"></script>
-</body>
-
-</html>
+            <div class="_column shipping" id="shippingCtr">
+              <div class="cart-totals-key">Shipping</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column taxes" id="taxesCtr">
+              <div class="cart-totals-key">Taxes (6%)</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column total" id="totalCtr">
+              <div class="cart-totals-key">Total</div>
+              <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column checkout">
+              <button class="_btn checkout-btn entypo-forward">Checkout</button>
+            </div>
+          </footer>
+      
+        </section>
+      </div>
+</script>
+<!-- do not touch-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<!-- end of do not touch-->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="./js/main.js"></script>
