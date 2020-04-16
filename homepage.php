@@ -43,10 +43,9 @@
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    
 
 </head>
 
@@ -67,14 +66,7 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-md-3 col-sm-12 col-12">
-                    <div class="btn-group">
-                        <button class="btn border dropdown-toggle my-md-4 my-2" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">USD</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" style="color:white">EUR</a>
-                            
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-6 col-12 text-center">
                     <h2 class="my-md-3 site-title text-white" style="font-family:roboto; font-size:60px">Pete's Online Store</h2>
@@ -92,9 +84,9 @@
                                 {
                                     $FName = $row['FName'];
                                 }
-                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:white">'.'Welcome '.$FName.'!'.'</p>';
+                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
-                                echo '<a class="px-2"  style="color:white; width:auto; border-style: solid; border-color:black; padding: 10px 30px; background-color:red;"href="./Login/logout.php" >Logout</a>';
+                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size: 20px; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Log Out</a>';
                             }
                             else{
                         ?>
@@ -239,21 +231,21 @@
                     </p>
                 </div>
             
-            <div class="container-fluid p-0">
+        <div class="container-fluid p-0" style=" padding-top:20px;">
             <!--PHP Display --> 
                 <?php
                 if (isset($_SESSION['Valid']))
                  {
                      echo '<p style="margin-left:825px; color:green">'.$Valid.'</p>';
-                     session_destroy();
+                     //session_destroy();
                 }
                 elseif (isset($_SESSION['Unauthorized']))
                 {
                     echo '<p style="margin-left:255px;color:red">'.$Unauthorized.'</p>';
-                    session_destroy();
+                    //session_destroy();
                 }
                 ?> 
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white" style = "font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -262,7 +254,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/homepage.php">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <?php
+                    <?php //If logged in, display Profile Button
                         if(isset($_SESSION['ID']))
                         {
                     echo '<li class="nav-item">';
@@ -277,18 +269,21 @@
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                 </ul>
-            </div>
+                </div>
              <div class="navbar-nav">
                 <li class="nav-item border rounded-circle mx-2 search-icon">
                     <i class="fas fa-search p-2"></i>  
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">                    
-                    <a class="fas fa-shopping-basket p-2 nav-link" href="/Test_Cart/Cart.php"></a> 
+                    <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a> 
                 </li>
-            </div>   
-        </div>            
-        </nav>
-    </div>    
+            </div>
+            </nav>   
+         </div>
+         <!-- issue-->            
+
+        </div> 
+        <!-- Issue-->   
     </header>
     <!-- Main Section-->
     <main>
@@ -302,19 +297,20 @@
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?>
-        <div class="col-md-4 col-12" style="padding-bottom:35px" align="center">
+        <div class="col-md-4 col-ld-4 col-sd-1 col-12" style="padding-bottom:35px" align="center">
             <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
-                <div  class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:47rem; height:65rem;" 
+                <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:47rem; height:65rem;" 
                     align="center">
                     <img src="<?php echo './assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" style="max-height:340px;"/><br/>
                     <div class="card-body" style="background-color:lightgray;">
-                    <h4 class="text-info"><?php echo $row["PrName"]; ?></h4>
-                    <h4 class="text"><?php echo $row["PrDesc"]; ?></h4>
-                    <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
-                    <input type="text" name="quantity" class="form-control" value="1" />
-                    <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
-                    <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
-                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success"
+
+                        <h4 class="text-info" style="font-size:25px;"><?php echo $row["PrName"]; ?></h4>
+                        <h4 class="text"><?php echo $row["PrDesc"]; ?></h4>
+                        <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
+                        <input type="text" name="quantity" class="form-control" value="1" />
+                        <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
+                        <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
+                        <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success"
                         value="Add to Cart" />
                     </div>
                 </div>
@@ -367,6 +363,14 @@
     <!-- end of do not touch-->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/main.js"></script>
+
+    <!-- Deleted Scripts
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    -->
 </body>
 
 </html>

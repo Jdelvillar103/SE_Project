@@ -63,14 +63,7 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-md-3 col-sm-12 col-12">
-                    <div class="btn-group">
-                        <button class="btn border dropdown-toggle my-md-4 my-2" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">USD</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" style="color:white">EUR</a>
-                            
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="col-md-6 col-12 text-center">
                     <h2 class="my-md-3 site-title text-white" style="font-family:roboto; font-size:60px">Pete's Online Store</h2>
@@ -128,7 +121,7 @@
                     <i class="fas fa-search p-2"></i>  
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    <i class="fas fa-shopping-basket p-2"></i>  
+                <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a>  
                 </li>   
             </div>            
         </nav>
