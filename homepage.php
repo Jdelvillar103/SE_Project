@@ -282,9 +282,8 @@
                 <li class="nav-item border rounded-circle mx-2 search-icon">
                     <i class="fas fa-search p-2"></i>  
                 </li> 
-                <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    
-                    <a class="nav-link" href="/Test_Cart/Cart.php"><i class="fas fa-shopping-basket p-2"></i></a> 
+                <li class="nav-item border rounded-circle mx-2 basket-icon">                    
+                    <a class="fas fa-shopping-basket p-2 nav-link" href="/Test_Cart/Cart.php"></a> 
                 </li>
             </div>   
         </div>            
@@ -309,7 +308,7 @@
                     align="center">
                     <img src="<?php echo '../assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" /><br />
                     <h4 class="text-info"><?php echo $row["PrName"]; ?></h4>
-                    <h4 class="text-info" style = "color:black"><?php echo $row["PrDesc"]; ?></h4>
+                    <h4 class="text-info"><?php echo $row["PrDesc"]; ?></h4>
                     <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
                     <input type="text" name="quantity" class="form-control" value="1" />
                     <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
