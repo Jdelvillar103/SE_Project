@@ -79,7 +79,7 @@
                                 }
                                 echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
-                                echo '<a class="px-2"  style="color:white; width:auto; border-style: solid; border-color:black; padding: 10px 30px; background-color:red;"href="./Login/logout.php" >Logout</a>';
+                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Logout</a>';
                             }
                             else{
                         ?>
@@ -238,7 +238,7 @@
                     //session_destroy();
                 }
                 ?> 
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -43,7 +43,7 @@
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    
 
     
 
@@ -245,7 +245,7 @@
                     //session_destroy();
                 }
                 ?> 
-            <nav class="navbar navbar-expand-lg navbar-light bg-white" style = "font-size:22px;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -288,7 +288,7 @@
     <!-- Main Section-->
     <main>
     <br/>
-
+<div class="row row-cols-1 row-cols-md-3">
         <?php  
                 $query = "SELECT * FROM products ORDER BY ID_Product ASC";  
                 $result = mysqli_query($dbc, $query);  
@@ -297,9 +297,10 @@
                      while($row = mysqli_fetch_array($result))  
                      {  
                 ?>
-        <div class="col-md-4 col-ld-4 col-sd-1 col-12" style="padding-bottom:35px" align="center">
+
+        <div class="col mb-4 " style="padding-bottom:37px;" align="center">
             <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
-                <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:47rem; height:65rem;" 
+                <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:25rem; height:45rem;" 
                     align="center">
                     <img src="<?php echo './assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" style="max-height:340px;"/><br/>
                     <div class="card-body" style="background-color:lightgray;">
@@ -321,7 +322,7 @@
                 }  
                 ?>
         
-       
+       </div>
     </div>
     <br />
 

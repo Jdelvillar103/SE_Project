@@ -43,7 +43,7 @@
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-
+    
 </head>
 
 <body>
@@ -84,7 +84,7 @@
                                 }
                                 echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
-                                echo '<a class="px-2"  style="color:white; width:auto; border-style: solid; border-color:black; padding: 10px 30px; background-color:red;"href="./Login/logout.php" >Logout</a>';
+                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Logout</a>';
                             }
                             else{
                                 header("location:homepage.php");
@@ -96,7 +96,7 @@
                 </div>
             </div>
         <div class="container-fluid p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -170,7 +170,7 @@
     
                             <div class="container">
                                 <div class="login">
-                                    <h1 style="font-size:50px" class="text-center">Update Your Profile</h1>
+                                    <h1 style="font-size:50px" class="text-left">Update Your Profile</h1>
                                     <br>
                 <!-- PHP Display-->
                 <?php
