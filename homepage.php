@@ -306,9 +306,9 @@
             <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
                 <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;"
                     align="center">
-                    <img src="<?php echo '../assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" /><br />
+                    <img src="<?php echo './assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" /><br />
                     <h4 class="text-info"><?php echo $row["PrName"]; ?></h4>
-                    <h4 class="text-info"><?php echo $row["PrDesc"]; ?></h4>
+                    <h4 class="text"><?php echo $row["PrDesc"]; ?></h4>
                     <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
                     <input type="text" name="quantity" class="form-control" value="1" />
                     <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
