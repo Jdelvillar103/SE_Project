@@ -43,6 +43,10 @@
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -289,46 +293,69 @@
     </header>
     <!-- Main Section-->
     <main>
+    <br/>
 
-        <!--- First Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider">
-                <div class="slider-one">
-                <!-- Add products to slider-->
-                    <div>
-                        <img src="./assets/item-1.jpg" class="img-fluid" alt="Banner 1"/>
-                    </div>
+        <?php  
+                $query = "SELECT * FROM products ORDER BY ID_Product ASC";  
+                $result = mysqli_query($dbc, $query);  
+                if(mysqli_num_rows($result) > 0)  
+                {  
+                     while($row = mysqli_fetch_array($result))  
+                     {  
+                ?>
+        <div class="col-md-4">
+            <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
+                <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;"
+                    align="center">
+                    <img src="<?php echo '../assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" /><br />
+                    <h4 class="text-info"><?php echo $row["PrName"]; ?></h4>
+                    <h4 class="text-info" style = "color:black"><?php echo $row["PrDesc"]; ?></h4>
+                    <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
+                    <input type="text" name="quantity" class="form-control" value="1" />
+                    <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
+                    <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
+                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success"
+                        value="Add to Cart" />
                 </div>
-            </div>
-         <div class="slider-btn">
-            <span class="prev position-top"><i class="fas fa-chevron-left"></i></span>
-            <span class="next position-top right-0"><i class="fas fa-chevron-right"></i></span>
-         </div>   
+            </form>
         </div>
-        <!--- First Slider-->
+        <?php  
+                     }  
+                }  
+                ?>
+        <div style="clear:both"></div>
+        <?php   
+                          if(!empty($_SESSION["shopping_cart"]))  
+                          {  
+                               $total = 0;  
+                               foreach($_SESSION["shopping_cart"] as $keys => $values)  
+                               {  
+                          ?>
+                <tr>
+                    <td><?php echo $values["item_name"]; ?></td>
+                    <td><?php echo $values["item_quantity"]; ?></td>
+                    <td>$ <?php echo $values["item_price"]; ?></td>
+                    <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
+                    <td><a href="Test_Cart/Cart.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span
+                                class="text-danger">Remove</span></a></td>
+                </tr>
+                <?php  
+                                    $total = $total + ($values["item_quantity"] * $values["item_price"]);  
+                               }  
+                          ?>
+                <tr>
+                    <td colspan="3" align="right">Total</td>
+                    <td align="right">$ <?php echo number_format($total, 2); ?></td>
+                    <td></td>
+                </tr>
+                <?php  
+                          }  
+                          ?>
+       
+    </div>
+    <br />
 
-        <!-- Second Slider-->
-        <div class="container-fluid p-0">
-            <div class="site-slider-two px-md-4"></div>
-                <div class="row slider-two text-center">
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                    <!-- add image src-->
-                        <img src="./assets/id-9-cat-1.jpg" alt="Product 1">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                    <!-- add image src-->
-                    <div class="col-md-2 product pt-md-5 pt-4">
-                        <img src="./assets/id-9-cat-2.jpg" alt="Product 2">
-                            <span class="border site-btn btn-span">Type of Product</span>
-                    </div>
-                </div>
-                <div class="slider-btn">
-                    <span class="prev position-top"><i class="fas fa-chevron-left fa-2x text-secondary"></i></span>
-                    <span class="next position-top right-0"><i class="fas fa-chevron-right fa-2x text-secondary"></i></span>
-                </div>   
-            </div>       
-        </div>
-        <!--/Second Slider-->
+       
     </main>
     <!-- Main Section-->
     <footer></footer>
