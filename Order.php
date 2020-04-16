@@ -52,20 +52,13 @@
         <div class="container"> 
             <div class="row">
                 <div class="col-md-3 col-sm-12 col-12col-md-3 col-sm-12 col-12col-md-3 col-sm-12 col-12">
-                    <div class="btn-group">
-                        <button class="btn border dropdown-toggle my-md-4 my-2" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">USD</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" style="color:white">EUR</a>
-                            
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-6 col-12 text-center">
                     <h2 class="my-md-3 site-title text-white" style="font-family:roboto; font-size:60px">Pete's Online Store</h2>
                 </div>
                 <div class="col-md-3 col-12 text-right">
-                    <p class="my-md-4 header-links">
+                    <p class="md-3 header-links">
                         <!-- Beginning of code that only runs when NOT logged in-->
                         <?php
                             if(isset($_SESSION['ID']))//If logged in, display login button
@@ -77,13 +70,13 @@
                                 {
                                     $FName = $row['FName'];
                                 }
-                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:white">'.'Welcome '.$FName.'!'.'</p>';
+                                echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
-                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Logout</a>';
+                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size: 20px; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Logout</a>';
                             }
                             else{
                         ?>
-                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
+                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style=" font-size:25px;">Sign In</a>
                         <div id="id01" class="modal">
                         
                             <form class="modal-content animate" action="./Login/login.php" method="post">
@@ -101,7 +94,7 @@
                                     <input type="password" placeholder="Enter Password" name="psw" required>
                                     
                                     <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Login</span></button>
+                                        <button type="submit" id="signin_button"><span style="font-size:24px">Login</span></button>
                                     </div>
                                 </div>
                         
@@ -114,14 +107,14 @@
                         </div>
                         
                         
-                        <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
+                        <a href="#" class="px-2" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
                         <div id="id02" class="modal">
                         
                             <form class="modal-content animate" action="./Login/signup.php" method="post">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id02').style.display='none'" class="close"
                                         title="Close Window">×</span> <br>
-                                    <h1 class="text-center" style="font-size:35px">Sign Up</h1>
+                                    <h1 class="text-center" style="font-size:45px">Sign Up</h1>
                                 </div>
                         
                                 <div class="container text-left">
@@ -203,13 +196,11 @@
                                     </select><br><br>
                                     <label><b style="font-size:20px">Zipcode</b></label>
                                     <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required title="7 to 9 characters">
-                                </div><br>
-                                    
+                                    <br>
                                     <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Create Account</span></button>
+                                        <button type="submit" id="signin_button"><span style="font-size:24px">Create Account</span></button>
                                     </div>
-                                
-                                <br>
+                                </div>
                                 <div class="container text-left" style="background-color:#f1f1f1">
                                     <button type="button" onclick="document.getElementById('id02').style.display='none'"
                                         class="cancelbtn">Cancel</button>
@@ -269,7 +260,7 @@
                     <i class="fas fa-search p-2"></i>  
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">                    
-                    <a class="fas fa-shopping-basket p-2 nav-link" href="/Test_Cart/Cart.php"></a> 
+                    <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a> 
                 </li>
             </div>  
             </nav> 
@@ -302,7 +293,7 @@
                     <td><?php echo $values["item_quantity"]; ?></td>
                     <td>$ <?php echo $values["item_price"]; ?></td>
                     <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
-                    <td><a href="Cart.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span
+                    <td><a href="Order.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span
                                 class="text-danger">Remove</span></a></td>
                 </tr>
                 <?php  
@@ -321,5 +312,14 @@
         </div>
     </div>
     <br />
+    <div class="row">
+        <div class="col-md-6 col-12">
+
+        </div>
+
+        <div class="col-md-6 col-12">
+
+        </div>
+    </div>
 </body>
 </html>

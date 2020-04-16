@@ -1,6 +1,8 @@
 <?php
 session_start();//Resumes the session from the other pages (able to access previous stored variables)
 unset($_SESSION['ID']);
+unset($_SESSION['Valid']);
+unset($_SESSION['Unauthorized']);
 if(empty($_SESSION['shopping_cart']))
 {
     session_unset();

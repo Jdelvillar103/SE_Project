@@ -11,7 +11,7 @@
   {
     $Unauthorized = $_SESSION['Unauthorized'];
   }
-
+  
   /*if(isset($_SESSION['ID']))
   {
     session_destroy();
@@ -72,7 +72,7 @@
                     <h2 class="my-md-3 site-title text-white" style="font-family:roboto; font-size:60px">Pete's Online Store</h2>
                 </div>
                 <div class="col-md-3 col-12 text-right">
-                    <p class="my-md-4 header-links">
+                    <p class="md-3 header-links">
                         <!-- Beginning of code that only runs when NOT logged in-->
                         <?php
                             if(isset($_SESSION['ID']))//If logged in, display login button
@@ -90,7 +90,7 @@
                             }
                             else{
                         ?>
-                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</a>
+                        <a href="#" class="px-2" onclick="document.getElementById('id01').style.display='block'" style=" font-size:25px;">Sign In</a>
                         <div id="id01" class="modal">
                         
                             <form class="modal-content animate" action="./Login/login.php" method="post">
@@ -108,7 +108,7 @@
                                     <input type="password" placeholder="Enter Password" name="psw" required>
                                     
                                     <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Login</span></button>
+                                        <button type="submit" id="signin_button"><span style="font-size:24px">Login</span></button>
                                     </div>
                                 </div>
                         
@@ -121,14 +121,14 @@
                         </div>
                         
                         
-                        <a href="#" class="px-1" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Create an Account</a>
+                        <a href="#" class="px-2" onclick="document.getElementById('id02').style.display='block'" style="width:auto; font-size:25px; color:lightblue;">Create an Account</a>
                         <div id="id02" class="modal">
                         
                             <form class="modal-content animate" action="./Login/signup.php" method="post">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id02').style.display='none'" class="close"
                                         title="Close Window">×</span> <br>
-                                    <h1 class="text-center" style="font-size:35px">Sign Up</h1>
+                                    <h1 class="text-center" style="font-size:45px">Sign Up</h1>
                                 </div>
                         
                                 <div class="container text-left">
@@ -210,13 +210,11 @@
                                     </select><br><br>
                                     <label><b style="font-size:20px">Zipcode</b></label>
                                     <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" placeholder="Zipcode" required title="7 to 9 characters">
-                                </div><br>
-                                    
+                                    <br>
                                     <div class="text-center">
-                                        <button type="submit" id="signin_button"><span style="font-size:18px">Create Account</span></button>
+                                        <button type="submit" id="signin_button"><span style="font-size:24px">Create Account</span></button>
                                     </div>
-                                
-                                <br>
+                                </div>
                                 <div class="container text-left" style="background-color:#f1f1f1">
                                     <button type="button" onclick="document.getElementById('id02').style.display='none'"
                                         class="cancelbtn">Cancel</button>
@@ -234,7 +232,11 @@
         <div class="container-fluid p-0" style=" padding-top:20px;">
             <!--PHP Display --> 
                 <?php
-                if (isset($_SESSION['Valid']))
+                if (isset($_SESSION['ID']))
+                 {
+                     unset($_SESSION['Valid']);
+                }
+                elseif (isset($_SESSION['Valid']))
                  {
                      echo '<p style="margin-left:825px; color:green">'.$Valid.'</p>';
                      //session_destroy();
@@ -257,9 +259,9 @@
                     <?php //If logged in, display Profile Button
                         if(isset($_SESSION['ID']))
                         {
-                    echo '<li class="nav-item">';
-                        echo '<a class="nav-link" href="/Profile.php">Profile</a>';
-                    echo '</li>';
+                            echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="/Profile.php">Profile</a>';
+                            echo '</li>';
                         }
                     ?>
                     <li class="nav-item">
@@ -280,16 +282,27 @@
             </div>
             </nav>   
          </div>
-         <!-- issue-->            
+                     
 
         </div> 
-        <!-- Issue-->   
+          
     </header>
     <!-- Main Section-->
     <main>
     <br/>
-<div class="row row-cols-1 row-cols-md-3">
+<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         <?php  
+                    if(isset($_SESSION["lastItemAdded"]))//Script for alerts
+                    {
+                        if(!($_SESSION["lastItemAdded"]=="duplicate"))
+                        {
+                            //echo '<script>alert("Item Added to Cart")</script>';
+                        }
+
+                        else{
+                            echo '<script>alert("Item Already Added")</script>';
+                        }
+                    }
                 $query = "SELECT * FROM products ORDER BY ID_Product ASC";  
                 $result = mysqli_query($dbc, $query);  
                 if(mysqli_num_rows($result) > 0)  
@@ -298,21 +311,23 @@
                      {  
                 ?>
 
-        <div class="col mb-4 " style="padding-bottom:37px;" align="center">
+        <div class="col-lg-4 col-md-6 col-sm-12 " style="padding-bottom:37px;" align="center">
             <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
                 <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:25rem; height:45rem;" 
                     align="center">
+                    
                     <img src="<?php echo './assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" style="max-height:340px;"/><br/>
+                    
                     <div class="card-body" style="background-color:lightgray;">
 
                         <h4 class="text-info" style="font-size:25px;"><?php echo $row["PrName"]; ?></h4>
-                        <h4 class="text"><?php echo $row["PrDesc"]; ?></h4>
+                        <h4 class="text-left" style="text-align:center;"><?php echo $row["PrDesc"]; ?></h4>
                         <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
                         <input type="text" name="quantity" class="form-control" value="1" />
                         <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
                         <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
                         <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success"
-                        value="Add to Cart" />
+                        value="Add to Cart" /><br>
                     </div>
                 </div>
             </form>
@@ -348,8 +363,6 @@
             }
         }
     </script>
-
-    
     
     <!-- do not touch-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

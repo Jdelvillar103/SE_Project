@@ -217,10 +217,10 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 INSERT INTO `products` (`PrName`, `PrDesc`, `Price`, `ImageName`, `Category`) VALUES
 ('Sofa', 'A long, comfy chair that seats multiple people.', 800.00, 'Sofa', 1),
-('Dining Chair', 'A chair intented to matched with a dining table. It will be comfortable with the included cushion', 250.00, 'Dining_Chair', 1),
-('Vase', 'A glass container that can hold liquids. Intended for flowers, but you do you.', 50.00, 'Vase', 1),
+('Dining Chair', 'A chair intented to matched with a dining table. It will be comfortable with the included cushion.', 250.00, 'Dining_Chair', 1),
+('Vase', 'A ceramic container that can hold liquids. Intended for flowers, but you do you.', 50.00, 'Vase', 1),
 ('Frame', 'A hangable holder for pictures and other small memorable items. I guess maybe pressed flowers as well.', 10.00, 'Frame', 1),
-('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy, candy...do you see where I am going with this?', 800.00, 'Small_Jar', 1);
+('Small Jar', 'A container that can hold items such as candy, mints, chocolates, candy...do you see where I am going with this?', 800.00, 'Small_Jar', 1);
 
 -- -----------------------------------------------------
 -- Table `e_commerce`.`categories`
