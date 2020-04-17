@@ -248,17 +248,11 @@
                         }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shop</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                 </ul>
             </div>
              <div class="navbar-nav">
-                <li class="nav-item border rounded-circle mx-2 search-icon">
-                    <i class="fas fa-search p-2"></i>  
-                </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">                    
                     <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a> 
                 </li>
