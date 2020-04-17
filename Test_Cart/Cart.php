@@ -24,7 +24,7 @@
            {  
                 echo '<script>alert("Item Already Added")</script>';  
                 echo '<script>window.location = "../index.php"</script>';  
-           }  
+           } 
       }  
       else  //If Cart is empty
       {  
@@ -41,3 +41,4 @@
 
  ?>
  </html>
+ 

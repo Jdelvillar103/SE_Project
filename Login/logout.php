@@ -3,6 +3,7 @@ session_start();//Resumes the session from the other pages (able to access previ
 unset($_SESSION['ID']);
 unset($_SESSION['Valid']);
 unset($_SESSION['Unauthorized']);
+unset($_SESSION['Verified']);
 if(empty($_SESSION['shopping_cart']))
 {
     session_unset();
