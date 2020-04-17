@@ -308,7 +308,7 @@
 
         <div class="col-lg-4 col-md-6 col-sm-12 " style="padding-bottom:37px;" align="center">
             <form method="post" action="Test_Cart/Cart.php?action=add&id=<?php echo $row["ID_Product"]; ?>">
-                <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:25rem; height:45rem;" 
+                <div class="card" style="border:5px solid purple; background-color:white; border-radius:5px; padding-top:20px; width:25rem; height:47rem;" 
                     align="center">
                     
                     <img src="<?php echo './assests/'.$row["ImageName"].'.jpg'; ?>" class="img-responsive" style="max-height:340px;"/><br/>

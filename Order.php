@@ -307,7 +307,84 @@
     </div>
     <br />
     <div class="row">
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12"><!-- Delivery Verification Information -->
+        <h2>Verify Delivery Information</h2>
+            <form  action="../update.php" method="post">
+                <div>
+                    <label for="address1" style="font-size:20px">Address 1:</label>
+                    <input type="text" name="Address" id="address" value="<?php echo $Address; ?>" contenteditable="true"> <br><br>
+                    <label for="city" style="font-size:20px">City:</label>
+                    <input type="text" name="City" id="city" value="<?php echo $City; ?>" contenteditable="true"> <br> <br>
+    
+                    <label style="font-size:20px">State: </label>
+                    <select name="StateN" id="select-choice">
+                        <option <?php if ($ID_State == 1) echo 'selected="selected"'; ?> value=1>Alabama</option>
+                        <option <?php if ($ID_State == 2) echo 'selected="selected"'; ?> value=2>Alaska</option>
+                        <option <?php if ($ID_State == 3) echo 'selected="selected"'; ?> value=3>Arizona</option>
+                        <option <?php if ($ID_State == 4) echo 'selected="selected"'; ?> value=4>Arkansas</option>
+                        <option <?php if ($ID_State == 5) echo 'selected="selected"'; ?> value=5>California</option>
+                        <option <?php if ($ID_State == 6) echo 'selected="selected"'; ?> value=6>Colorado</option>
+                        <option <?php if ($ID_State == 7) echo 'selected="selected"'; ?> value=7>Connecticut</option>
+                        <option <?php if ($ID_State == 8) echo 'selected="selected"'; ?> value=8>Delaware</option>
+                        <option <?php if ($ID_State == 9) echo 'selected="selected"'; ?> value=9>Florida</option>
+                        <option <?php if ($ID_State == 10) echo 'selected="selected"'; ?> value=10>Georgia</option>
+                        <option <?php if ($ID_State == 11) echo 'selected="selected"'; ?> value=11>Hawaii</option>
+                        <option <?php if ($ID_State == 12) echo 'selected="selected"'; ?> value=12>Idaho</option>
+                        <option <?php if ($ID_State == 13) echo 'selected="selected"'; ?> value=13>Illinois</option>
+                        <option <?php if ($ID_State == 14) echo 'selected="selected"'; ?> value=14>Indiana</option>
+                        <option <?php if ($ID_State == 15) echo 'selected="selected"'; ?> value=15>Iowa</option>
+                        <option <?php if ($ID_State == 16) echo 'selected="selected"'; ?> value=16>Kansas</option>
+                        <option <?php if ($ID_State == 17) echo 'selected="selected"'; ?> value=17>Kentucky</option>
+                        <option <?php if ($ID_State == 18) echo 'selected="selected"'; ?> value=18>Louisiana</option>
+                        <option <?php if ($ID_State == 19) echo 'selected="selected"'; ?> value=19>Maine</option>
+                        <option <?php if ($ID_State == 20) echo 'selected="selected"'; ?> value=20>Maryland</option>
+                        <option <?php if ($ID_State == 21) echo 'selected="selected"'; ?> value=21>Massachusetts</option>
+                        <option <?php if ($ID_State == 22) echo 'selected="selected"'; ?> value=22>Michigan</option>
+                        <option <?php if ($ID_State == 23) echo 'selected="selected"'; ?> value=23>Minnesota</option>
+                        <option <?php if ($ID_State == 24) echo 'selected="selected"'; ?> value=24>Mississippi</option>
+                        <option <?php if ($ID_State == 25) echo 'selected="selected"'; ?> value=25>Missouri</option>
+                        <option <?php if ($ID_State == 26) echo 'selected="selected"'; ?> value=26>Montana</option>
+                        <option <?php if ($ID_State == 27) echo 'selected="selected"'; ?> value=27>Nebraska</option>
+                        <option <?php if ($ID_State == 28) echo 'selected="selected"'; ?> value=28>Nevada</option>
+                        <option <?php if ($ID_State == 29) echo 'selected="selected"'; ?> value=29>New Hampshire</option>
+                        <option <?php if ($ID_State == 30) echo 'selected="selected"'; ?> value=30>New Jersey</option>
+                        <option <?php if ($ID_State == 31) echo 'selected="selected"'; ?> value=31>New Mexico</option>
+                        <option <?php if ($ID_State == 32) echo 'selected="selected"'; ?> value=32>New York</option>
+                        <option <?php if ($ID_State == 33) echo 'selected="selected"'; ?> value=33>North Carolina</option>
+                        <option <?php if ($ID_State == 34) echo 'selected="selected"'; ?> value=34>North Dakota</option>
+                        <option <?php if ($ID_State == 35) echo 'selected="selected"'; ?> value=35>Ohio</option>
+                        <option <?php if ($ID_State == 36) echo 'selected="selected"'; ?> value=36>Oklahoma</option>
+                        <option <?php if ($ID_State == 37) echo 'selected="selected"'; ?> value=37>Oregon</option>
+                        <option <?php if ($ID_State == 38) echo 'selected="selected"'; ?> value=38>Pennsylvania</option>
+                        <option <?php if ($ID_State == 39) echo 'selected="selected"'; ?> value=39>Rhode Island</option>
+                        <option <?php if ($ID_State == 40) echo 'selected="selected"'; ?> value=40>South Carolina</option>
+                        <option <?php if ($ID_State == 41) echo 'selected="selected"'; ?> value=41>South Dakota</option>
+                        <option <?php if ($ID_State == 42) echo 'selected="selected"'; ?> value=42>Tennessee</option>
+                        <option <?php if ($ID_State == 43) echo 'selected="selected"'; ?> value=43>Texas</option>
+                        <option <?php if ($ID_State == 44) echo 'selected="selected"'; ?> value=44>Utah</option>
+                        <option <?php if ($ID_State == 45) echo 'selected="selected"'; ?> value=45>Vermont</option>
+                        <option <?php if ($ID_State == 46) echo 'selected="selected"'; ?> value=46>Virginia</option>
+                        <option <?php if ($ID_State == 47) echo 'selected="selected"'; ?> value=47>Washington</option>
+                        <option <?php if ($ID_State == 48) echo 'selected="selected"'; ?> value=48>West Virginia</option>
+                        <option <?php if ($ID_State == 49) echo 'selected="selected"'; ?> value=49>Wisconsin</option>
+                        <option <?php if ($ID_State == 50) echo 'selected="selected"'; ?> value=50>Wyoming</option>
+                    </select>
+    
+                </div><br>
+    
+                <div><!--  -->
+                    <label for="Zipcode" style="font-size:20px">Zipcode:</label>
+                    <input type="text" name="Zipcode" id="Zipcode" pattern=".{5}" value="<?php echo $Zipcode; ?>" contenteditable="true" title="7 to 9 characters">
+                </div>
+    
+                <br>
+                <div>
+                    <input type="hidden" name="profile" value="<?php echo $Profile; ?>">
+                    <input type="hidden" name="email" value="<?php echo $Email; ?>">
+                    <button type="submit" id="signin_button" name="submit"><span style="font-size:18px">Save Changes</span></button>
+                    <button type = "reset" class= "cancelbtn" name="reset">Reset</button>
+                </div>
+            </form>
 
         </div>
 
