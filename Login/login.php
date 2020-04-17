@@ -24,7 +24,7 @@ if(isset($_POST['email']))
       {
         $_SESSION['ID'] = $ID;
         mysqli_close($dbc);
-        $url = "../homepage.php";
+        $url = "../index.php";
         header("Location: ".$url);
         exit();
       }
@@ -33,7 +33,7 @@ if(isset($_POST['email']))
         $Unauthorized = "Email or Password Wrong: Case Sensitive!";
         $_SESSION['Unauthorized'] = $Unauthorized;
         mysqli_close($dbc);
-        $url = "../homepage.php";
+        $url = "../index.php";
         header("Location: ".$url);
         exit();
       }
@@ -41,7 +41,7 @@ if(isset($_POST['email']))
     else
     {
       mysqli_close($dbc);
-      $url = "../homepage.php";
+      $url = "../index.php";
       header("Location: ".$url);
       exit();
     }

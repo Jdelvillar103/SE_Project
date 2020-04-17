@@ -87,7 +87,7 @@
                                 echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size:20px;padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Log Out</a>';
                             }
                             else{
-                                header("location:homepage.php");
+                                header("location:index.php");
                                 die;
                             }
                         ?>
@@ -103,7 +103,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/homepage.php">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/index.php">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Profile.php">Profile</a>

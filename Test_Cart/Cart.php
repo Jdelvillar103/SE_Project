@@ -18,12 +18,12 @@
                      'item_quantity'          =>     $_POST["quantity"]  
                 );  
                 $_SESSION["shopping_cart"][$count] = $item_array;
-                echo '<script>window.location = "../homepage.php"</script>';  
+                echo '<script>window.location = "../index.php"</script>';  
            }  
            else //If Item is already in cart 
            {  
                 echo '<script>alert("Item Already Added")</script>';  
-                echo '<script>window.location = "../homepage.php"</script>';  
+                echo '<script>window.location = "../index.php"</script>';  
            }  
       }  
       else  //If Cart is empty
@@ -35,7 +35,7 @@
                 'item_quantity'          =>     $_POST["quantity"]  
            );  
            $_SESSION["shopping_cart"][0] = $item_array;  
-           echo '<script>window.location = "../homepage.php"</script>';
+           echo '<script>window.location = "../index.php"</script>';
       }  
  }  
 

@@ -34,7 +34,7 @@
         mysqli_close($dbc);
         $Valid = "Email Already Exists: Try Logging in";
         $_SESSION['Valid'] = $Valid;
-        $url = "../homepage.php";
+        $url = "../index.php";
         header("Location: ".$url);
         exit();
       }
@@ -73,7 +73,7 @@
 
                 $Valid = "Account Created: Log In";
                 $_SESSION['Valid'] = $Valid;
-                $url = "../homepage.php";
+                $url = "../index.php";
                 header("Location: ".$url);
                 exit();
               }
@@ -82,7 +82,7 @@
                 mysqli_close($dbc);
                 $Valid = "INVALID: Passwords Don't Match";
                 $_SESSION['Valid'] = $Valid;
-                $url = "../homepage.php";
+                $url = "../index.php";
                 header("Location: ".$url);
                 exit();
               }
@@ -92,7 +92,7 @@
               mysqli_close($dbc);
               $Valid = "INVALID: Zip Code MUST be 5 Integers";
               $_SESSION['Valid'] = $Valid;
-              $url = "../homepage.php";
+              $url = "../index.php";
               header("Location: ".$url);
               exit();
         		}
@@ -102,7 +102,7 @@
             mysqli_close($dbc);
             $Valid = "INVALID: City must only contain characters";
             $_SESSION['Valid'] = $Valid;
-            $url = "../homepage.php";
+            $url = "../index.php";
             header("Location: ".$url);
             exit();
       		}
@@ -112,7 +112,7 @@
           mysqli_close($dbc);
           $Valid = "INVALID: Last Name must be only char";
           $_SESSION['Valid'] = $Valid;
-          $url = "../homepage.php";
+          $url = "../index.php";
           header("Location: ".$url);
           exit();
     		}
@@ -122,7 +122,7 @@
         mysqli_close($dbc);
         $Valid = "INVALID: First Name must be only char";
         $_SESSION['Valid'] = $Valid;
-        $url = "../homepage.php";
+        $url = "../index.php";
         header("Location: ".$url);
         exit();
   		}
@@ -131,7 +131,7 @@
     {
       $Valid = "INVALID EMAIL: example@gmail.com";
       $_SESSION['Valid'] = $Valid;
-      $url = "../homepage.php";
+      $url = "../index.php";
       header("Location: ".$url);
       exit();
 		}
