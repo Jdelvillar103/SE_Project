@@ -69,7 +69,7 @@
                     <h2 class="my-md-3 site-title text-white" style="font-family:roboto; font-size:60px">Pete's Online Store</h2>
                 </div>
                 <div class="col-md-3 col-12 text-right">
-                    <p class="my-md-4 header-links">
+                    <p class="md-3 header-links">
 
                         <!-- Beginning of code that only runs when NOT logged in-->
                         <?php
@@ -84,7 +84,7 @@
                                 }
                                 echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
-                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Logout</a>';
+                                echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size:20px;padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Log Out</a>';
                             }
                             else{
                                 header("location:homepage.php");
@@ -95,7 +95,7 @@
                     </p>
                 </div>
             </div>
-        <div class="container-fluid p-0">
+        <div class="container-fluid p-0" style="padding-top:20px;">
             <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -121,7 +121,7 @@
                     <i class="fas fa-search p-2"></i>  
                 </li> 
                 <li class="nav-item border rounded-circle mx-2 basket-icon">
-                <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a>  
+                    <a class="fas fa-shopping-basket p-2 nav-link" href="Order.php"></a>  
                 </li>   
             </div>            
         </nav>

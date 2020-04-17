@@ -229,7 +229,7 @@
                     </p>
                 </div>
             
-        <div class="container-fluid p-0" style=" padding-top:20px;">
+        <div class="container-fluid p-0" style="padding-top:20px;">
             <!--PHP Display --> 
                 <?php
                 if (isset($_SESSION['ID']))
