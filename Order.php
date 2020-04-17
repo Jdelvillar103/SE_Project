@@ -64,12 +64,20 @@
                             if(isset($_SESSION['ID']))//If logged in, display login button
                             {
                                 $ID = $_SESSION['ID'];
-                                $query = "SELECT P.FName FROM profile AS P WHERE P.ID_Profile = '$ID';";
+                                $query = "SELECT * FROM profile AS P WHERE P.ID_Profile = '$ID';";
                                 $response = @mysqli_query($dbc,$query);
                                 while ($row = mysqli_fetch_array($response))
                                 {
                                     $FName = $row['FName'];
+                                    $LName = $row['LName'];
+                                    $Address = $row['Address'];
+                                    $City = $row['City'];
+                                    $ID_State = $row['State'];
+                                    $Zipcode = $row['Zipcode'];
+                                    $Email = $row['Email'];
+                                    $Profile = $row['ID_Profile'];
                                 }
+                                mysqli_close($dbc);
                                 echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                 
                                 echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size: 20px; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Log Out</a>';
