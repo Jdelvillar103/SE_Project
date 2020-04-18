@@ -133,15 +133,15 @@
                     $myfile = fopen( $CartID.".txt", "w") or die("Unable to open file!");
                     
                     //Enters Customer and carts information
-                    $txt= "Order For: ".$row['FName']." ".$row['LName']."\nEmail: ".$row['Email']. "\n";
+                    $txt= "Order For: ".$row['FName']." ".$row['LName']."\n\nEmail: ".$row['Email']. "\n\n";
                     fwrite($myfile, $txt);
-                    $txt= "Order ID: ".$row['cartID'].
-                    fwrite($myfile, $txt);
-
-                    $txt= "Billing Info: ";
+                    $txt= "Order ID: ".$row['ID_Cart']. "\n\n";
                     fwrite($myfile, $txt);
 
-                    $txt= "Delivery: "
+                    $txt= "Billing Info: ".$row['Pa_FName']." ".$row['Pa_LName']." \n".$row['CTypeN']."\n".$row['CardNum']."\n\n";
+                    fwrite($myfile, $txt);
+
+                    $txt= "Delivery Information: \n\tAddress: ".$row['Address'].", ".$row['City'].", ".$row['StateAbbreviation']." ".$row['Zipcode']."\n\nORDER DETAILS:\n";
                     fwrite($myfile, $txt);
 
                     //Insert Product Information;
@@ -152,15 +152,16 @@
 
                         //Set variables for every attribte stored in the temp array
                         $PrID = $item_array['item_id'];
+                        //$PrName = $item_array["item_name"];
                         $Quantity = $item_array['item_quantity'];
                         $Price = $Quantity*$item_array['item_price'];
-                        $txt= "Order For: "pr.FName." ".pt.LName."\n";
+                        $txt= $PrID."\tQuantity: ".$Quantity."\tPrice: $".$Price."\n";
                         fwrite($myfile, $txt);
                         
                         
                     }
                     
-                    fwrite($myfile, $txt);
+                    //fwrite($myfile, $txt);
                    // $Address = $SESSION["ID"];
                     //$txt = "Delivered To: " + $FName + " " + $LName + " Address: ";
                    // fwrite($myfile, $txt);
@@ -169,8 +170,8 @@
                 }
 
             //return $stmt->fetchAll();
-            //header("Location: ./index.php?checkout=successful");
-			//exit();
+            header("Location: ./index.php?checkout=successful");
+			exit();
 
         }
         
