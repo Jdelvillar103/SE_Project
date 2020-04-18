@@ -43,7 +43,7 @@
         if (ctype_alpha(str_replace(' ', '', $LName)))
         {
           $Address = filter_var($Address,FILTER_SANITIZE_SPECIAL_CHARS);
-          if((ctype_alpha(str_replace(' ', '', $City)))
+          if(ctype_alpha(str_replace(' ', '', $City)))
           {
             if(filter_var($Zipcode,FILTER_VALIDATE_INT) && strlen($Zipcode) == 5)
             {

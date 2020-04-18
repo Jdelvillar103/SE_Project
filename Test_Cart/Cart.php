@@ -18,6 +18,7 @@
                      'item_quantity'          =>     $_POST["quantity"]  
                 );  
                 $_SESSION["shopping_cart"][$count] = $item_array;
+                
                 echo '<script>window.location = "../index.php"</script>';  
            }  
            else //If Item is already in cart 
