@@ -266,7 +266,7 @@
                     ?>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="/AboutUs.php">About Us</a>
                     </li>
                 </ul>
                 </div>

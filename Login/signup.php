@@ -38,12 +38,12 @@
         header("Location: ".$url);
         exit();
       }
-      if (ctype_alpha($FName))
+      if (ctype_alpha(str_replace(' ', '', $FName)))
       {
-        if (ctype_alpha($LName))
+        if (ctype_alpha(str_replace(' ', '', $LName)))
         {
           $Address = filter_var($Address,FILTER_SANITIZE_SPECIAL_CHARS);
-          if(ctype_alpha($City))
+          if((ctype_alpha(str_replace(' ', '', $City)))
           {
             if(filter_var($Zipcode,FILTER_VALIDATE_INT) && strlen($Zipcode) == 5)
             {
