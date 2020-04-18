@@ -25,6 +25,7 @@ if(isset($_POST['email']))
       if($email = $tempEmail && $password = $tempPass)
       {
         $_SESSION['ID'] = $ID;
+        unset($_SESSION['Unauthorized']);
         mysqli_close($dbc);
         $url = "../index.php";
         header("Location: ".$url);

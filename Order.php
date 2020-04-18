@@ -502,7 +502,7 @@
                                 $results = mysqli_query($dbc,$sql);
                                 $resultCheck = mysqli_num_rows($results);
                                 if($resultCheck>0){
-                                    while($row = mysqli_fetch_assoc($results)){
+                                    while($row = mysqli_fetch_assoc($results)){//This isn't running
                                         $Pa_FName = $row['Pa_FName'];
                                         $Pa_LName = $row['Pa_LName'];
                                         $Pa_MInit = $row['Pa_MInit'];
@@ -516,7 +516,7 @@
                                 }
                                 else
                                 {
-                                mysqli_close($dbc);
+                                    mysqli_close($dbc);
                                 }
                             
                     ?>
@@ -524,17 +524,17 @@
                     <form  action="./CheckOut.php" method="post">
                         <div>
                             <label for="FirstName" style="font-size:20px">First Name:</label>
-                            <input type="text" name="FName" id="Pa_FName" contenteditable required value= "<?php echo $Pa_First; ?>"> <br><br>
+                            <input type="text" name="FName" id="Pa_FName" value= "<?php echo $Pa_FName; ?>" contenteditable required > <br><br>
                             <label for="MInit" style="font-size:20px">Middle Initial:</label>
                             <input type="text" name="MInit" id="PA_MInit" pattern=".{1}" contenteditable value= "<?php echo $Pa_MInit; ?>"> <br> <br>
                             <label for="LastName" style="font-size:20px">Last Name:</label>
-                            <input type="text" name="LName" id="LName"  contenteditable required value= "<?php echo $Pa_Last; ?>"> <br> <br>
+                            <input type="text" name="LName" id="LName"  contenteditable required value= "<?php echo $Pa_LName; ?>"> <br> <br>
                             <label for="CardType" style="font-size:20px">Card Type:</label>
-                            <select name="CType" id="select-choice" value= "<?php echo $CardType; ?>">
-                                <option value=1>MasterCard</option>
-                                <option value=2>VISA</option>
-                                <option value=3>American Express</option>
-                                <option value=4>Discover Card</option>
+                            <select name="CType" id="select-choice">
+                                <option <?php if ($CardType == 1) echo 'selected="selected"'; ?>value=1>MasterCard</option>
+                                <option <?php if ($CardType == 2) echo 'selected="selected"'; ?>value=2>VISA</option>
+                                <option <?php if ($CardType == 3) echo 'selected="selected"'; ?>value=3>American Express</option>
+                                <option <?php if ($CardType == 4) echo 'selected="selected"'; ?>value=4>Discover Card</option>
                             </select><br><br>
                             <label for="CardNumber" style="font-size:20px">Card Number:</label><br>
                             <input type="number" name="CardNumber" id="CardNum" pattern=".{12}"contenteditable="true" title="12 characters" value= "<?php echo $CardNum; ?>"required><br><br>
@@ -553,7 +553,8 @@
                     </form>
                     <?php 
                             }
-                        }}
+                        }
+                         }
                         else{}
                     ?>
                 </div>

@@ -68,6 +68,9 @@
                 mysqli_query( $dbc, $sql );
                 mysqli_close($dbc);
                 echo "Role is equal 1";
+                $sql = "UPDATE profile SET Role = '1' WHERE ID_Profile = '$ID';";
+                mysqli_query( $dbc, $sql );
+                mysqli_close($dbc);
                 
             }
 
@@ -75,10 +78,11 @@
             {
                 $sql = "UPDATE payment SET Pa_MInit = '$Pa_MInit' WHERE ID_Payment = '$ID';";
                 mysqli_query( $dbc, $sql );
+                mysqli_close($dbc);
             }
 
             //Add products to cart
-            if(!empty($_SESSION["shopping_cart"]))  
+            if(!isset($_SESSION["shopping_cart"]))  
             {  
                 $total = $_SESSION['CartTotal'];
                 $query = "INSERT INTO cart(ID_Cust,CStatus,Total) VALUES('$ID','2','$total')";
@@ -102,7 +106,7 @@
                     $dbc->query($query);
                     }
                 }
-                
+                mysqli_close($dbc);
             }
             unset($_SESSION["shopping_cart"]);
             header("Location: ./index.php?checkout=successful");
@@ -130,4 +134,4 @@
 
 	}
 
-    ?>
+?>
