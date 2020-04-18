@@ -110,7 +110,7 @@
                                         $Email = $row['Email'];
                                         $Profile = $row['ID_Profile'];
                                     }
-                                    mysqli_close($dbc);
+                                    //mysqli_close($dbc);
                                     echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:white">'.'Welcome '.$FName.'!'.'</p>';
                                     
                                     echo '<a class="px-2"  style="color:black; width:auto; border-style: solid; border-color:black; font-size: 20px; padding: 5px 30px; background-color:white;"href="./Login/logout.php" >Log Out</a>';
@@ -456,13 +456,13 @@
                 <div class="col-md-4 col-12">
                     <?php
                         if(isset($_SESSION['Verified'])){
-                        if($_SESSION['Verified']==true)
-                        {
+                            if($_SESSION['Verified']==true)
+                            {
                     ?>
                     <h2>Payment Information</h2>
                     <?php
-                            if($_SESSION['Role']==2)
-                            {
+                                if($_SESSION['Role']==2)
+                                {
                     ?>
                     <form  action="./CheckOut.php" method="post">
                         <div>
@@ -495,28 +495,28 @@
                         </div>
                     </form>
                     <?php
-                            }
-                            elseif($_SESSION['Role']==1){
-                                $ID = $_SESSION['ID'];
-                                $sql = "SELECT * FROM `payment` WHERE `ID_Payment` = '$ID'";
-                                $results = mysqli_query($dbc,$sql);
-                                $resultCheck = mysqli_num_rows($results);
-                                if($resultCheck>0){
-                                    while($row = mysqli_fetch_assoc($results)){//This isn't running
-                                        $Pa_FName = $row['Pa_FName'];
-                                        $Pa_LName = $row['Pa_LName'];
-                                        $Pa_MInit = $row['Pa_MInit'];
-                                        $CardType = $row['CardType'];
-                                        $CardNum = $row['CardNum'];
-                                        $ExpMonth = $row['ExpMonth'];
-                                        $ExpYear = $row['ExpYear'];
-                                        $CVV = $row['CVV'];
-                                    }
-                                    mysqli_close($dbc);
                                 }
+                                elseif($_SESSION['Role']==1){
+                                    $ID = $_SESSION['ID'];
+                                    $sql = "SELECT * FROM `payment` WHERE `ID_Payment` = '$ID'";
+                                    $results = mysqli_query($dbc,$sql);
+                                    $resultCheck = mysqli_num_rows($results);
+                                    if($resultCheck>0){
+                                        while($row = mysqli_fetch_assoc($results)){//This isn't running
+                                            $Pa_FName = $row['Pa_FName'];
+                                            $Pa_LName = $row['Pa_LName'];
+                                            $Pa_MInit = $row['Pa_MInit'];
+                                            $CardType = $row['CardType'];
+                                            $CardNum = $row['CardNum'];
+                                            $ExpMonth = $row['ExpMonth'];
+                                            $ExpYear = $row['ExpYear'];
+                                            $CVV = $row['CVV'];
+                                        }
+                                        mysqli_close($dbc);
+                                    }
                                 else
-                                {
-                                    mysqli_close($dbc);
+                                {                                    
+                                   mysqli_close($dbc);
                                 }
                             
                     ?>
@@ -552,10 +552,11 @@
                         </div>
                     </form>
                     <?php 
+                                }
                             }
                         }
-                         }
-                        else{}
+                        
+                        
                     ?>
                 </div>
             </div>
