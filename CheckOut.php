@@ -59,6 +59,8 @@
                 $query = "INSERT INTO payment(ID_Payment,Pa_FName,Pa_LName,CardType,CardNum,ExpMonth,ExpYear,CVV) VALUES('$ID','$Pa_First','$Pa_Last','$CardType','$CardNum','$ExpMonth','$ExpYear','$CVV')";
                 $dbc->query($query);  
                 $_SESSION['Role'] = 1;
+                $sql = "UPDATE profile SET Role = '1' WHERE ID_Profile = '$ID';";
+                mysqli_query( $dbc, $sql );
                 mysqli_close($dbc);
                 echo "Role is equal 2\n";
             }
@@ -66,10 +68,7 @@
             {//Update payment information
                 $sql = "UPDATE payment SET Pa_FName = '$Pa_First', Pa_LName = '$Pa_Last', CardType = '$CardType', CardNum = '$CardNum', ExpMonth = '$ExpMonth', ExpYear = '$ExpYear', CVV = '$CVV' WHERE ID_Payment = '$ID';";
                 mysqli_query( $dbc, $sql );
-                mysqli_close($dbc);
                 echo "Role is equal 1";
-                $sql = "UPDATE profile SET Role = '1' WHERE ID_Profile = '$ID';";
-                mysqli_query( $dbc, $sql );
                 mysqli_close($dbc);
                 
             }
