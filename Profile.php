@@ -103,14 +103,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/index.php">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Profile.php">Profile</a>
+                        <a class="nav-link" href="/Profile.php">Profile<span class="sr-only">(current)</span></a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="/AboutUs.php">About Us</a>
                     </li>
                 </ul>
             </div>
