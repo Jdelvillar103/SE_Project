@@ -452,24 +452,31 @@
                     <form  action="../Checkout.php" method="post">
                         <div>
                             <label for="FirstName" style="font-size:20px">First Name:</label>
-                            <input type="text" name="FirstName" id="Pa_FName" contenteditable required> <br><br>
+                            <input type="text" name="FName" id="Pa_FName" contenteditable required> <br><br>
                             <label for="MInit" style="font-size:20px">Middle Initial:</label>
                             <input type="text" name="MInit" id="PA_MInit"  contenteditable> <br> <br>
                             <label for="LastName" style="font-size:20px">Last Name:</label>
                             <input type="text" name="LName" id="LName"  contenteditable required> <br> <br>
-                            <label for="CardNumber" style="font-size:20px">Card Number:</label>
-                            <input type="text" name="CardNum" id="CardNum"  contenteditable required> <br> <br>
-                            <label for="ExpMonth" style="font-size:20px">Exp Month(Double Digit):</label>
-                            <input type="text" name="ExpMonth" id="ExpMonth"  contenteditable required> <br> <br>
-                            <label for="ExpYear" style="font-size:20px">Exp Year (Last 2 Digits):</label>
-                            <input type="text" name="ExpYear" id="ExpYear" contenteditable required> <br> <br>
+                            <label for="CardType" style="font-size:20px">Card Type:</label>
+                            <select name="CType" id="select-choice">
+                                <option value=1>MasterCard</option>
+                                <option value=2>VISA</option>
+                                <option value=3>American Express</option>
+                                <option value=4>Discover Card</option>
+                            </select><br><br>
+                            <label for="CardNumber" style="font-size:20px">Card Number:</label><br>
+                            <input type="number" name="CardNumber" id="CardNum" pattern=".{12}"contenteditable="true" title="12 characters" required><br><br>
+                            <label for="ExpMonth" style="font-size:20px">Exp Month(Double Digit):</label><br>
+                            <input type="number" name="ExpMonth" id="ExpMonth"  pattern=".{2}" contenteditable required min="01" max="12"> <br> <br>
+                            <label for="ExpYear" style="font-size:20px">Exp Year (Last 2 Digits):</label><br>
+                            <input type="number" name="ExpYear" id="ExpYear" pattern=".{2}"contenteditable required min="00" max="99"> <br> <br>
                             <label for="CVV" style="font-size:20px">CVV:</label>
-                            <input type="password" name="CVV" id="CVV" contenteditable required> <br> <br>    
+                            <input type="password" name="CVV" id="CVV"  contenteditable required> <br> <br>    
                         </div><br>
 
                         <br>
                         <div>
-                            <button type="submit" id="signin_button" name="submit"><span style="font-size:18px">Check Out</span></button>
+                            <button type="submit" id="signin_button" name="Check Out"><span style="font-size:18px">Check Out</span></button>
                         </div>
                     </form>
                     <?php

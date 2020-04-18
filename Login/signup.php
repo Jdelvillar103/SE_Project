@@ -58,7 +58,7 @@
 
                 $query = "INSERT INTO profile(Email,FName,LName,Address,City,State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
                 $result = $dbc->query($query);
-
+                $_SESSION['Role'] = 2;
                 $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email";
                 $response = $dbc->query($query);
                 while($row = mysqli_fetch_array($response))

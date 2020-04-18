@@ -252,6 +252,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `ID_Cust` INT(6) UNSIGNED ZEROFILL,
   `DateCreated` datetime DEFAULT CURRENT_TIMESTAMP,
   `CStatus` INT(1) DEFAULT 1,
+  `Total` decimal(8,2),
   PRIMARY KEY (`ID_Cart`),
   CONSTRAINT `FK_Cust_ID`
     FOREIGN KEY (`ID_Cust`)
