@@ -117,19 +117,19 @@
         //$num_rows = mysqli_num_rows($retrival);
         
         //Create Reciept
-        /*
+           /*
             $myfile = fopen("Reciept.txt", "w") or die("Unable to open file!");
             foreach($_SESSION["shopping_cart"] as $keys => $values)
             {
-                $txt= $PrID + "\t" + $Quantity + "\t" + $Price + "\t" $total + "\n";
+                $txt= $PrID + "\t" + $Quantity + "\t" + $Price + "\t" + $total + "\n";
             }
             fwrite($myfile, $txt);
-            $Address = $SESSION["ID"]
+            $Address = $SESSION["ID"];
             $txt = "Delivered To: " + $FName + " " + $LName + " Address: ";
             fwrite($myfile, $txt);
             fclose($myfile);
-        */
-		
+        
+            */
 
 	}
 
