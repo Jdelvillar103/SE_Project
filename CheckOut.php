@@ -108,6 +108,7 @@
                 mysqli_close($dbc);
             }
             unset($_SESSION["shopping_cart"]);
+            unset($_SESSION["Verified"]);
             header("Location: ./index.php?checkout=successful");
 			exit();
 
