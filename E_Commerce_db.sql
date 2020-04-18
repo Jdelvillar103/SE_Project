@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `Pa_MInit` VARCHAR(1),
   `Pa_LName` VARCHAR(20) NOT NULL,
   `CardType` INT(1) NOT NULL,
-  `CardNum` INT(12) NOT NULL,
+  `CardNum` BIGINT(12) NOT NULL,
   `ExpMonth` INT(2) NOT NULL,
   `ExpYear` INT(2) NOT NULL,
   `CVV` INT(3) NOT NULL,
