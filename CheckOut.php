@@ -61,7 +61,7 @@
                 $_SESSION['Role'] = 1;
                 $sql = "UPDATE profile SET Role = '1' WHERE ID_Profile = '$ID';";
                 mysqli_query( $dbc, $sql );
-                mysqli_close($dbc);
+                //mysqli_close($dbc);
                 echo "Role is equal 2\n";
             }
             elseif($_SESSION['Role']==1)//If payment information has been saved
@@ -69,7 +69,7 @@
                 $sql = "UPDATE payment SET Pa_FName = '$Pa_First', Pa_LName = '$Pa_Last', CardType = '$CardType', CardNum = '$CardNum', ExpMonth = '$ExpMonth', ExpYear = '$ExpYear', CVV = '$CVV' WHERE ID_Payment = '$ID';";
                 mysqli_query( $dbc, $sql );
                 echo "Role is equal 1";
-                mysqli_close($dbc);
+                //mysqli_close($dbc);
                 
             }
 
@@ -77,15 +77,15 @@
             {
                 $sql = "UPDATE payment SET Pa_MInit = '$Pa_MInit' WHERE ID_Payment = '$ID';";
                 mysqli_query( $dbc, $sql );
-                mysqli_close($dbc);
+                //mysqli_close($dbc);
             }
 
             //Add products to cart
-            if(!isset($_SESSION["shopping_cart"]))  
+            if(isset($_SESSION["shopping_cart"]))  
             {  
                 $total = $_SESSION['CartTotal'];
                 $query = "INSERT INTO cart(ID_Cust,CStatus,Total) VALUES('$ID','2','$total')";
-                $dbc->query($query);
+                $retrival = mysqli_query( $dbc, $query );
                 
                 $query = "SELECT ID_Cart FROM `cart` WHERE ID_Cust = '$ID' ORDER BY DateCreated DESC LIMIT 1;";
                 $retrival = mysqli_query( $dbc, $query );
@@ -102,18 +102,79 @@
                         $Price = $Quantity*$item_array['item_price'];
                         
                     $query = "INSERT INTO cartItems(CartID,ProductID,Quantity, Price) VALUES('$CartID','$PrID','$Quantity','$Price')";
-                    $dbc->query($query);
+                    $retrival = mysqli_query( $dbc, $query );
                     }
                 }
-                mysqli_close($dbc);
+                //mysqli_close($dbc);
             }
-            unset($_SESSION["shopping_cart"]);
+            //unset($_SESSION["shopping_cart"]);
             unset($_SESSION["Verified"]);
-            header("Location: ./index.php?checkout=successful");
-			exit();
+
+            $query = "SELECT ID_Cart FROM `cart` WHERE ID_Cust = '$ID' ORDER BY DateCreated DESC LIMIT 1;";
+                $retrival = mysqli_query( $dbc, $query );
+                
+                $row = mysqli_fetch_array($retrival);
+                $CartID = $row['ID_Cart'];
+
+            $sql = "SELECT pr.FName, pr.LName, pr.Address, pr.City, s.StateAbbreviation, pr.Email, pr.Zipcode, pa.Pa_FName, pa.Pa_MInit, pa.Pa_LName, ct.CTypeN, pa.CardNum, pa.ExpMonth, pa.ExpYear, c.ID_Cart, c.DateCreated, c.Total 
+                        FROM profile as pr, cart as c, payment as pa, states as s, card_type as ct
+                         where pr.ID_Profile = pa.ID_Payment and pr.ID_Profile = c.ID_Cust and s.ID_State = pr.State and ct.ID_CType = pa.CardType 
+                         and c.ID_Cart = $CartID and pr.ID_Profile = $ID";
+
+            $stmt = mysqli_query( $dbc, $sql );
+            while ($row = mysqli_fetch_array($stmt))
+                {
+                    //Create File
+                    
+                    //Set Variables from the query [if necessary]
+                    $PR_FName = $row['FName'];
+
+                    //Open File
+                    $myfile = fopen( $CartID.".txt", "w") or die("Unable to open file!");
+                    
+                    //Enters Customer and carts information
+                    $txt= "Order For: ".$row['FName']." ".$row['LName']."\nEmail: ".$row['Email']. "\n";
+                    fwrite($myfile, $txt);
+                    $txt= "Order ID: ".$row['cartID'].
+                    fwrite($myfile, $txt);
+
+                    $txt= "Billing Info: ";
+                    fwrite($myfile, $txt);
+
+                    $txt= "Delivery: "
+                    fwrite($myfile, $txt);
+
+                    //Insert Product Information;
+                    foreach($_SESSION["shopping_cart"] as $keys => $values)
+                    {
+                        //Create A temporary Array to store shopping cart
+                        $item_array = $_SESSION["shopping_cart"][$keys];
+
+                        //Set variables for every attribte stored in the temp array
+                        $PrID = $item_array['item_id'];
+                        $Quantity = $item_array['item_quantity'];
+                        $Price = $Quantity*$item_array['item_price'];
+                        $txt= "Order For: "pr.FName." ".pt.LName."\n";
+                        fwrite($myfile, $txt);
+                        
+                        
+                    }
+                    
+                    fwrite($myfile, $txt);
+                   // $Address = $SESSION["ID"];
+                    //$txt = "Delivered To: " + $FName + " " + $LName + " Address: ";
+                   // fwrite($myfile, $txt);
+                    fclose($myfile);
+                    echo "Closed FIle";
+                }
+
+            //return $stmt->fetchAll();
+            //header("Location: ./index.php?checkout=successful");
+			//exit();
 
         }
-		
+        
+        
 		//$retrival = mysqli_query( $dbc, $sqlquery );
         //$num_rows = mysqli_num_rows($retrival);
         

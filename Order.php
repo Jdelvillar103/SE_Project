@@ -335,9 +335,10 @@
                                     class="submit">[+]</span></a></td>
                         </tr>
                         <?php  
-                                    $total = $total + ($values["item_quantity"] * $values["item_price"]);  
+                                    $total = $total + ($values["item_quantity"] * $values["item_price"]);
+                                    $_SESSION['CartTotal'] = $total;  
                                 }
-                                $_SESSION['CartTotal'] = $total;  
+                                
                         ?>
                         <tr>
                             <td colspan="3" align="right">Total</td>
@@ -502,7 +503,7 @@
                                     $results = mysqli_query($dbc,$sql);
                                     $resultCheck = mysqli_num_rows($results);
                                     if($resultCheck>0){
-                                        while($row = mysqli_fetch_assoc($results)){//This isn't running
+                                        while($row = mysqli_fetch_assoc($results)){
                                             $Pa_FName = $row['Pa_FName'];
                                             $Pa_LName = $row['Pa_LName'];
                                             $Pa_MInit = $row['Pa_MInit'];

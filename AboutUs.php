@@ -1,3 +1,23 @@
+<?php
+  session_start();
+  require_once('./mysql-connect.php');
+
+  if(isset($_SESSION['Valid']))
+  {
+    $Valid = $_SESSION['Valid'];
+  }
+
+  if(isset($_SESSION['Unauthorized']))
+  {
+    $Unauthorized = $_SESSION['Unauthorized'];
+  }
+  
+  /*if(isset($_SESSION['ID']))
+  {
+    session_destroy();
+  }*/
+ ?>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,7 +42,10 @@
 
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  
+
+    
+
+    
 
 </head>
 
@@ -223,6 +246,14 @@
                     echo '<p style="margin-left:255px;color:red">'.$Unauthorized.'</p>';
                     //session_destroy();
                 }
+                if(isset($_GET['checkout']))
+                {
+                    if($_GET['checkout']=="successful")
+                    {
+                         echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:green">'.' Your order has been placed! Thank you for shopping with us!'.'</p>';
+                                    
+                    }
+                }
                 ?> 
             <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -230,7 +261,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="/index.php">Home</a>
                     </li>
                     <?php //If logged in, display Profile Button
@@ -296,7 +327,7 @@
                     <a href="#"><i class="fa fa-linkedin"></i></a>
                     <a href="#"><i class="fa fa-facebook"></i></a>
                 <p>University of Houston</p>
-                <button onclick="location.href='mailto:josdp23@gmail.com';">Contact</button>
+                <button onclick="location.href='mailto:jdelvillar103@outlook.com';">Contact</button>
             </div>
         </div>
       </div>
@@ -308,7 +339,7 @@
         <div class="container">
             <div class="card-block text-center">
                 <h2>Ray Watson &nbsp;</h2>
-
+                
                 <p class="title">Software Developer</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <a href="#"><i class="fa fa-twitter"></i></a>
