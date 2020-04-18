@@ -278,47 +278,61 @@
     
 <div class="about-section">
     <h1 style = "text-align:center" ;>About Us</h1>
-    <h2 style = "text-align:center">Pete's Online Store Developers</h2>
     
+
   </div>
   
   <h2 style="text-align:center">Our Team</h2>
   <div class="row">
-    <div class="column">"
-      <div class="card">
-        <img src="" alt="Jose" style="width:100%">
+    <div class = "col-lg-4 col-md-4 col-sm-12">
+      <div class="card align-items-center">
+        <img src="assests/Pete.jpg" alt="Jose" style="width:50%;">
         <div class="container">
-          <h2>Jose</h2>
-          <p class="title">Software Developer</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p href= "jdelvillar103@outlook.com" >jdelvillar103@outlook.com</p>
-          <p><button class="button" url = "jdelvillar103@outlook.com" >Contact</button></p>
+            <div class="card-block text-center">
+                <h2>Jose Del Villar</h2>
+                <p class="title">Software Developer</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                <p>University of Houston</p>
+                <button onclick="location.href='mailto:josdp23@gmail.com';">Contact</button>
+            </div>
         </div>
       </div>
     </div>
   
-    <div class="column">
-      <div class="card">
-        <img src="" alt="Ray" style="width:100%">
+    <div class = "col-lg-4 col-md-4 col-sm-12">
+      <div class="card align-items-center">
+        <img src="assests/Pete.jpg" alt="Ray" style="width:50%">
         <div class="container">
-          <h2>Ray</h2>
-          <p class="title">Software Developer</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>ray@example.com</p>
-          <p><button class="button">Contact</button></p>
+            <div class="card-block text-center">
+                <h2>Ray Watson</h2>
+
+                <p class="title">Software Developer</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+				    <a href="#"><i class="fa fa-linkedin"></i></a>
+				    <a href="#"><i class="fa fa-facebook"></i></a>
+                <p>University of Houston</p>
+          <button onclick="location.href='mailto:rayvanwatsonjr@gmail.com';">Contact</button>
         </div>
       </div>
     </div>
-  
-    <div class="column">
-      <div class="card">
-        <img src="" alt="Ryan" style="width:100%">
+  </div>
+    <div class = "col-lg-4 col-md-4 col-sm-12">
+      <div class="card align-items-center">
+        <img src="assests/Pete.jpg" alt="Ryan" style="width:50%">
         <div class="container">
-          <h2>Ryan</h2>
+            <div class="card-block text-center">
+          <h2>Ryan Mastriano</h2>
           <p class="title">Software Developer</p>
           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>rmastriano@uh.edu</p>
-          <p><button class="button">Contact</button></p>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+          <p>University of Houston</p>
+         <button onclick="location.href='mailto:rmastriano@uh.edu';">Contact</button>
         </div>
       </div>
     </div>
