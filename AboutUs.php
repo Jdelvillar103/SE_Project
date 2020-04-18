@@ -307,7 +307,7 @@
         <img src="assests/Pete.jpg" alt="Ray" style="width:50%">
         <div class="container">
             <div class="card-block text-center">
-                <h2>Ray Watson</h2>
+                <h2>Ray Watson &nbsp;</h2>
 
                 <p class="title">Software Developer</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
