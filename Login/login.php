@@ -10,7 +10,7 @@ if(isset($_POST['email']))
     $email = $_POST["email"];
     $password = $_POST["psw"];
 
-    $query = "SELECT P.ID_Profile, P.Email, C.Password FROM profile AS P,credentials AS C WHERE P.Email = '$email' && C.Password = '$password';";
+    $query = "SELECT P.ID_Profile, P.Email, P.Role, C.Password FROM profile AS P,credentials AS C WHERE P.Email = '$email' && C.Password = '$password';";
     $response = @mysqli_query($dbc,$query);
     if($response)
     {
@@ -19,10 +19,13 @@ if(isset($_POST['email']))
         $ID = $row['ID_Profile'];
         $tempEmail = $row['Email'];
         $tempPass = $row['Password'];
+        $Role = $row['Role'];
+        $_SESSION['Role'] = $Role;
       }
       if($email = $tempEmail && $password = $tempPass)
       {
         $_SESSION['ID'] = $ID;
+        unset($_SESSION['Unauthorized']);
         mysqli_close($dbc);
         $url = "../index.php";
         header("Location: ".$url);

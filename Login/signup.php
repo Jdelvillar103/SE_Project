@@ -43,7 +43,7 @@
         if (ctype_alpha(str_replace(' ', '', $LName)))
         {
           $Address = filter_var($Address,FILTER_SANITIZE_SPECIAL_CHARS);
-          if((ctype_alpha(str_replace(' ', '', $City)))
+          if(ctype_alpha(str_replace(' ', '', $City)))
           {
             if(filter_var($Zipcode,FILTER_VALIDATE_INT) && strlen($Zipcode) == 5)
             {
@@ -58,7 +58,7 @@
 
                 $query = "INSERT INTO profile(Email,FName,LName,Address,City,State,Zipcode) VALUES ('$email','$FName','$LName','$Address','$City','$ID_State','$Zipcode')";
                 $result = $dbc->query($query);
-
+                $_SESSION['Role'] = 2;
                 $query = "SELECT P.ID_Profile FROM profile AS P WHERE '$email' = P.Email";
                 $response = $dbc->query($query);
                 while($row = mysqli_fetch_array($response))
