@@ -246,6 +246,14 @@
                     echo '<p style="margin-left:255px;color:red">'.$Unauthorized.'</p>';
                     //session_destroy();
                 }
+                if(isset($_GET['checkout']))
+                {
+                    if($_GET['checkout']=="successful")
+                    {
+                         echo '<p class="px-2" style="margin-center:825px; font-size: 20px; padding-bottom: 3px; color:green">'.' Your order has been placed! Thank you for shopping with us!'.'</p>';
+                                    
+                    }
+                }
                 ?> 
             <nav class="navbar navbar-expand-lg navbar-light bg-white" style ="font-size:22px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -318,7 +326,7 @@
                         <h4 class="text-info" style="font-size:25px;"><?php echo $row["PrName"]; ?></h4>
                         <h4 class="text-left" style="text-align:center;"><?php echo $row["PrDesc"]; ?></h4>
                         <h4 class="text-danger">$ <?php echo $row["Price"]; ?></h4>
-                        <input type="text" name="quantity" class="form-control" value="1" />
+                        <input type="number" name="quantity" class="form-control" value="1" contenteditable min="1"/>
                         <input type="hidden" name="hidden_name" value="<?php echo $row["PrName"]; ?>" />
                         <input type="hidden" name="hidden_price" value="<?php echo $row["Price"]; ?>" />
                         <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success"

@@ -1,6 +1,15 @@
 <?php
     session_start();
     require_once('./mysql-connect.php');
+    if(isset($_SESSION['Valid']))
+    {
+        $Valid = $_SESSION['Valid'];
+    }
+
+    if(isset($_SESSION['Unauthorized']))
+    {
+        $Unauthorized = $_SESSION['Unauthorized'];
+    }
      if(isset($_GET["action"]))  
  {  
       if($_GET["action"] == "delete")  
@@ -327,7 +336,8 @@
                         </tr>
                         <?php  
                                     $total = $total + ($values["item_quantity"] * $values["item_price"]);  
-                                }  
+                                }
+                                $_SESSION['CartTotal'] = $total;  
                         ?>
                         <tr>
                             <td colspan="3" align="right">Total</td>
@@ -431,7 +441,7 @@
                             echo '<p class="px-2 text-center" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:green">'.'<b>'.'Address Verified'.'</b>'.'</p>';
                             $_SESSION['Verified'] = true;
                         }
-                        else
+                        elseif (strpos($fullurl,"verify=failure") == true)
                         {
                             echo '<p class="px-2 text-center" style="margin-center:825px; font-size: 20px; padding-bottom: 5px; color:red">'.'<b>'.'Invalid Address'.'</b>'.'</p>';
                             $_SESSION['Verified'] = false; 
@@ -445,16 +455,21 @@
 
                 <div class="col-md-4 col-12">
                     <?php
+                        if(isset($_SESSION['Verified'])){
                         if($_SESSION['Verified']==true)
                         {
                     ?>
                     <h2>Payment Information</h2>
-                    <form  action="../Checkout.php" method="post">
+                    <?php
+                            if($_SESSION['Role']==2)
+                            {
+                    ?>
+                    <form  action="./CheckOut.php" method="post">
                         <div>
                             <label for="FirstName" style="font-size:20px">First Name:</label>
                             <input type="text" name="FName" id="Pa_FName" contenteditable required> <br><br>
                             <label for="MInit" style="font-size:20px">Middle Initial:</label>
-                            <input type="text" name="MInit" id="PA_MInit"  contenteditable> <br> <br>
+                            <input type="text" name="MInit" id="PA_MInit" pattern=".{1}" contenteditable> <br> <br>
                             <label for="LastName" style="font-size:20px">Last Name:</label>
                             <input type="text" name="LName" id="LName"  contenteditable required> <br> <br>
                             <label for="CardType" style="font-size:20px">Card Type:</label>
@@ -480,10 +495,66 @@
                         </div>
                     </form>
                     <?php
-                        }
-                        else{
+                            }
+                            elseif($_SESSION['Role']==1){
+                                $ID = $_SESSION['ID'];
+                                $sql = "SELECT * FROM `payment` WHERE `ID_Payment` = '$ID'";
+                                $results = mysqli_query($dbc,$sql);
+                                $resultCheck = mysqli_num_rows($results);
+                                if($resultCheck>0){
+                                    while($row = mysqli_fetch_assoc($results)){
+                                        $Pa_FName = $row['Pa_FName'];
+                                        $Pa_LName = $row['Pa_LName'];
+                                        $Pa_MInit = $row['Pa_MInit'];
+                                        $CardType = $row['CardType'];
+                                        $CardNum = $row['CardNum'];
+                                        $ExpMonth = $row['ExpMonth'];
+                                        $ExpYear = $row['ExpYear'];
+                                        $CVV = $row['CVV'];
+                                    }
+                                    mysqli_close($dbc);
+                                }
+                                else
+                                {
+                                mysqli_close($dbc);
+                                }
                             
-                        }
+                    ?>
+                    <!-- Form-->
+                    <form  action="./CheckOut.php" method="post">
+                        <div>
+                            <label for="FirstName" style="font-size:20px">First Name:</label>
+                            <input type="text" name="FName" id="Pa_FName" contenteditable required value= "<?php echo $Pa_First; ?>"> <br><br>
+                            <label for="MInit" style="font-size:20px">Middle Initial:</label>
+                            <input type="text" name="MInit" id="PA_MInit" pattern=".{1}" contenteditable value= "<?php echo $Pa_MInit; ?>"> <br> <br>
+                            <label for="LastName" style="font-size:20px">Last Name:</label>
+                            <input type="text" name="LName" id="LName"  contenteditable required value= "<?php echo $Pa_Last; ?>"> <br> <br>
+                            <label for="CardType" style="font-size:20px">Card Type:</label>
+                            <select name="CType" id="select-choice" value= "<?php echo $CardType; ?>">
+                                <option value=1>MasterCard</option>
+                                <option value=2>VISA</option>
+                                <option value=3>American Express</option>
+                                <option value=4>Discover Card</option>
+                            </select><br><br>
+                            <label for="CardNumber" style="font-size:20px">Card Number:</label><br>
+                            <input type="number" name="CardNumber" id="CardNum" pattern=".{12}"contenteditable="true" title="12 characters" value= "<?php echo $CardNum; ?>"required><br><br>
+                            <label for="ExpMonth" style="font-size:20px">Exp Month(Double Digit):</label><br>
+                            <input type="number" name="ExpMonth" id="ExpMonth"  pattern=".{2}" contenteditable required min="01" max="12" value= "<?php echo $ExpMonth; ?>"> <br> <br>
+                            <label for="ExpYear" style="font-size:20px">Exp Year (Last 2 Digits):</label><br>
+                            <input type="number" name="ExpYear" id="ExpYear" pattern=".{2}"contenteditable required min="00" max="99" value= "<?php echo $ExpYear; ?>"> <br> <br>
+                            <label for="CVV" style="font-size:20px">CVV:</label>
+                            <input type="password" name="CVV" id="CVV"  contenteditable required value= "<?php echo $CVV; ?>"> <br> <br>    
+                        </div><br>
+
+                        <br>
+                        <div>
+                            <button type="submit" id="signin_button" name="Check Out"><span style="font-size:18px">Check Out</span></button>
+                        </div>
+                    </form>
+                    <?php 
+                            }
+                        }}
+                        else{}
                     ?>
                 </div>
             </div>

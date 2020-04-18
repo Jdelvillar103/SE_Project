@@ -105,7 +105,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/index.php">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/Profile.php">Profile<span class="sr-only">(current)</span></a>
                     </li>
                     
