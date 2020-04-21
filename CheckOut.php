@@ -138,7 +138,7 @@
                     $txt= "Order ID: ".$row['ID_Cart']. "\n\n";
                     fwrite($myfile, $txt);
 
-                    $txt= "Billing Info: ".$row['Pa_FName']." ".$row['Pa_LName']." \n".$row['CTypeN']."\n".$row['CardNum']."\n\n";
+                    $txt= "Billing Info: ".$row['Pa_FName']." ".$row['Pa_LName']." \n".$row['CTypeN']."\nXXXX-XXXX-".substr($row['CardNum'],8)."\n\n";//xxxx-xxxx-L4Ds
                     fwrite($myfile, $txt);
 
                     $txt= "Delivery Information: \n\tAddress: ".$row['Address'].", ".$row['City'].", ".$row['StateAbbreviation']." ".$row['Zipcode']."\n\nORDER DETAILS:\n";
@@ -152,10 +152,10 @@
 
                         //Set variables for every attribte stored in the temp array
                         $PrID = $item_array['item_id'];
-                        //$PrName = $item_array["item_name"];
+                        $PrName = $item_array['item_name'];
                         $Quantity = $item_array['item_quantity'];
                         $Price = $Quantity*$item_array['item_price'];
-                        $txt= $PrID."\tQuantity: ".$Quantity."\tPrice: $".$Price."\n";
+                        $txt= $PrID."\t".$PrName."\tQuantity: ".$Quantity."\tPrice: $".$Price."\n";
                         fwrite($myfile, $txt);
                         
                         
@@ -170,6 +170,7 @@
                 }
 
             //return $stmt->fetchAll();
+            unset($_SESSION['shopping_cart']);
             header("Location: ./index.php?checkout=successful");
 			exit();
 

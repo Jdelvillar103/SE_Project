@@ -1,0 +1,19 @@
+Order For: Jose Del Villar
+
+Email: bloop@email.com
+
+Order ID: 00000012
+
+Billing Info: Jose Del Villar 
+MasterCard
+XXXX-XXXX-9876
+
+Delivery Information: 
+	Address: 2201 YALE ST, HOUSTON, TX 77008
+
+ORDER DETAILS:
+0000006	Quantity: 1	Price: $800
+0000007	Quantity: 1	Price: $250
+0000008	Quantity: 1	Price: $50
+0000009	Quantity: 1	Price: $10
+0000010	Quantity: 1	Price: $800
