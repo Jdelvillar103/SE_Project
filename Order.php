@@ -11,7 +11,7 @@
         $Unauthorized = $_SESSION['Unauthorized'];
     }
      if(isset($_GET["action"]))  
- {  
+    {  
       if($_GET["action"] == "delete")  
       {  
            foreach($_SESSION["shopping_cart"] as $keys => $values)  
