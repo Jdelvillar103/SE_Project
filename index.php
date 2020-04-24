@@ -43,10 +43,6 @@
     <!-- Slick Library-->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-    
-
-    
-
 </head>
 
 <body>
@@ -99,7 +95,6 @@
                                         title="Close Window">×</span> <br>
                                     <!-- If you want a header:  <h1 class="text-center">Sign In</h1>-->
                                 </div>
-                        
                                 <div class="container text-left">
                                     <label><b style="font-size:20px">Email</b></label>
                                     <input type="text" placeholder="Enter Email" name="email" required>
@@ -111,7 +106,6 @@
                                         <button type="submit" id="signin_button"><span style="font-size:24px">Login</span></button>
                                     </div>
                                 </div>
-                        
                                 <div class="container text-left" style="background-color:#f1f1f1">
                                     <button type="button" onclick="document.getElementById('id01').style.display='none'"
                                         class="cancelbtn">Cancel</button>
